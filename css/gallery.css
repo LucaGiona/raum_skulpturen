@@ -17,7 +17,7 @@
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: 8px;
-    background: #eee;
+    background: var(--color-surface);
 }
 
 .gallery-item img {
@@ -42,17 +42,17 @@
     padding: 12px 28px;
     font-size: 16px;
     font-family: sans-serif;
-    border: 2px solid #b92626;
-    background: #fff;
-    color: #b92626;
+    border: 2px solid var(--color-accent);
+    background: var(--color-bg);
+    color: var(--color-accent);
     border-radius: 30px;
     cursor: pointer;
     transition: background 0.2s ease, color 0.2s ease;
 }
 
 .load-more-btn:hover {
-    background: #b92626;
-    color: #fff;
+    background: var(--color-accent);
+    color: var(--color-bg);
 }
 
 @media (max-width: 900px) {
