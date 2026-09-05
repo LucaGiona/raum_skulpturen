@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/gallery.css">
     <title>Document</title>
 
 </head>
@@ -11,9 +12,91 @@
     <div class="logo-test">
         <img src="/assets/S+R-Logo_1.png" alt="Skulptur und Raum">
     </div>
-    <div>
-                <img src="/assets/images/picture-1600.jpeg" alt="Skulptur und Raum" class="monkey">
+  
 
+    <h1 class="gallery-title">Galerie</h1>
+
+    <div class="gallery-grid" id="gallery-grid"></div>
+
+    <div class="gallery-more-wrap">
+        <button id="load-more" class="load-more-btn">Mehr anzeigen</button>
     </div>
+
+    <script>
+        const images = [
+            "Finger.jpeg",
+            "Finger-filter-01-warm.jpg",
+            "Finger-filter-02-cool.jpg",
+            "Finger-filter-03-mono.jpg",
+            "Finger-filter-04-sepia.jpg",
+            "Finger-filter-05-vivid.jpg",
+            "Finger-filter-06-muted.jpg",
+            "Finger-filter-07-magenta.jpg",
+            "Hand01.jpg",
+            "Hand01-filter-01-warm.jpg",
+            "Hand01-filter-02-cool.jpg",
+            "Hand01-filter-03-mono.jpg",
+            "Hand01-filter-04-sepia.jpg",
+            "Hand01-filter-05-vivid.jpg",
+            "Hand01-filter-06-muted.jpg",
+            "Hand01-filter-07-magenta.jpg",
+            "hand.jpeg",
+            "hand-filter-01-warm.jpg",
+            "hand-filter-02-cool.jpg",
+            "hand-filter-03-mono.jpg",
+            "hand-filter-04-sepia.jpg",
+            "hand-filter-05-vivid.jpg",
+            "hand-filter-06-muted.jpg",
+            "hand-filter-07-magenta.jpg",
+            "picture-1600.jpeg",
+            "picture-1600-filter-01-warm.jpg",
+            "picture-1600-filter-02-cool.jpg",
+            "picture-1600-filter-03-mono.jpg",
+            "picture-1600-filter-04-sepia.jpg",
+            "picture-1600-filter-05-vivid.jpg",
+            "picture-1600-filter-06-muted.jpg",
+            "picture-1600-filter-07-magenta.jpg",
+            "skullhead.jpeg",
+            "skullhead-filter-01-warm.jpg",
+            "skullhead-filter-02-cool.jpg",
+            "skullhead-filter-03-mono.jpg",
+            "skullhead-filter-04-sepia.jpg",
+            "skullhead-filter-05-vivid.jpg",
+            "skullhead-filter-06-muted.jpg",
+            "skullhead-filter-07-magenta.jpg"
+        ];
+
+        const BATCH_SIZE = 8;
+        let shownCount = 0;
+
+        const grid = document.getElementById("gallery-grid");
+        const loadMoreBtn = document.getElementById("load-more");
+
+        function showNextBatch() {
+            const next = images.slice(shownCount, shownCount + BATCH_SIZE);
+            next.forEach(filename => {
+                const item = document.createElement("div");
+                item.className = "gallery-item";
+
+                const img = document.createElement("img");
+                img.src = "/assets/images/" + filename;
+                img.alt = filename;
+                img.loading = "lazy";
+
+                item.appendChild(img);
+                grid.appendChild(item);
+            });
+
+            shownCount += next.length;
+
+            if (shownCount >= images.length) {
+                loadMoreBtn.style.display = "none";
+            }
+        }
+
+        loadMoreBtn.addEventListener("click", showNextBatch);
+
+        showNextBatch();
+    </script>
 </body>
 </html>
