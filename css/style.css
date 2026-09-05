@@ -37,3 +37,98 @@
     color: #555;
     text-transform: uppercase;
 }
+
+.bio {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 0 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.bio-portrait {
+    width: 280px;
+    flex: 0 0 280px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.bio-name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: #222;
+}
+
+.bio-text {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #444;
+}
+
+@media (max-width: 720px) {
+    .bio {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .bio-portrait {
+        width: 200px;
+        flex-basis: auto;
+    }
+}
+
+.references {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 48px 20px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.references-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #222;
+    margin-bottom: 32px;
+}
+
+.references-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.references-list li {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    color: #555;
+    position: relative;
+}
+
+.references-list li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -17px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #ccc;
+}
