@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="/css/gallery.css">
     <title>Document</title>
     <script src="/js/gallery.js" type="module"></script>
+    <script src="/js/modal.js" type="module"></script>
 
 </head>
 <body>
+    
     <div class="logo-test">
         <img src="/assets/S+R-Logo_1.png" alt="Skulptur und Raum">
     </div>
@@ -59,9 +61,49 @@
         <li>Galerie Skulptur + Raum Berlin Prenzlauer Berg</li>
     </ul>
 </section>
-    <footer>
-
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <p class="footer-company">Skulptur + Raum</p>
+            <p class="footer-name">Gøran Thie</p>
+        </div>
+        <div class="footer-contact">
+            <p><a href="tel:+491788452485">+49 178 8452485</a></p>
+            <p>Kopenhagener Strasse 5, 10437 Berlin</p>
+            <p><a href="mailto:info@gipsmir.com">info@gipsmir.com</a></p>
+        </div>
+        <div class="footer-legal">
+            <button type="button" id="impressum-link" class="footer-link">Impressum</button>
+        </div>
     </footer>
+
+    <div id="impressum-modal" class="modal" hidden>
+        <div class="modal-overlay" data-modal-close></div>
+        <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="impressum-title">
+            <button type="button" class="modal-close" data-modal-close aria-label="Schließen">&times;</button>
+            <h2 id="impressum-title" class="modal-title">Impressum</h2>
+            <p class="modal-lorem">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus, nulla
+                gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus
+                magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus
+                vulputate vehicula. Donec lobortis risus a elit. Etiam tempor, ligula eu tempor congue, eros est
+                euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum,
+                nunc et pellentesque ultrices, arcu turpis aliquam nisl, at iaculis nunc risus a orci.
+            </p>
+            <div class="modal-details">
+                <p>Gøran Thie</p>
+                <p>Skulptur + Raum</p>
+                <p>Kopenhagener Strasse 5</p>
+                <p>10437 Berlin</p>
+                <p>Telefon: +49 (0)178 / 8452485</p>
+                <p>E-Mail: info@gipsmir.com</p>
+                <p>Steuernummer: 31/557/62146</p>
+            </div>
+        </div>
+    </div>
    
 </body>
 </html>
