@@ -8,16 +8,20 @@
     <title>Document</title>
     <script src="/js/gallery.js" type="module"></script>
     <script src="/js/modal.js" type="module"></script>
+    <script src="/js/i18n.js" type="module"></script>
 
 </head>
 <body>
-    
+    <header class="site-header">
     <div class="logo-test">
         <img src="/assets/S+R-Logo_1.png" alt="Skulptur und Raum">
     </div>
+    <button type="button" id="lang-toggle" class="lang-toggle" aria-label="Switch language">EN</button>
+    </header>
+   
 <section class="intro">
-    <h3 class="intro-title">Gips mir</h3>
-    <p class="intro-text">
+    <h3 class="intro-title" data-i18n="introTitle">Gips mir</h3>
+    <p class="intro-text" data-i18n="introText">
         Bildhauerei, Reliefs, Plastische Gestaltung,
         Assemblage, Modell- und Formbau, Casting,
         Farbgebung, Vergoldung,
@@ -25,18 +29,18 @@
     </p>
 </section>
 
-    <h1 class="gallery-title">Galerie</h1>
+    <h1 class="gallery-title" data-i18n="galleryTitle">Galerie</h1>
 
     <div class="gallery-grid" id="gallery-grid"></div>
 
     <div class="gallery-more-wrap">
-        <button id="load-more" class="load-more-btn">Mehr anzeigen</button>
+        <button id="load-more" class="load-more-btn" data-i18n="loadMore">Mehr anzeigen</button>
     </div>
 <section class="bio">
     <img class="bio-portrait" src="/assets/protrait.jpeg" alt="Göran Thie">
     <div class="bio-content">
         <h2 class="bio-name">Göran Thie</h2>
-        <p class="bio-text">
+        <p class="bio-text" data-i18n="bioText">
             Stilgrenzen spielen für mich keine Rolle. Ob ein Werk klassisch, abstrakt oder extravagant wird, bleibt bis zum
             Entstehungsprozess offen. Ich sammle die Eindrücke meines Alltags und verwebe sie mit meinen Gedanken. Das Ergebnis ist
             reine Diversität. Skulptur und Raum formen eine Symbiose, die sich in freien Arbeiten, visionärer „Kunst am Bau" und
@@ -47,7 +51,7 @@
     </div>
 </section>
 <section class="references">
-    <h2 class="references-title">Referenzen</h2>
+    <h2 class="references-title" data-i18n="referencesTitle">Referenzen</h2>
     <ul class="references-list">
         <li>Hotel Zoo Berlin</li>
         <li>Bostich Berlin</li>
@@ -72,7 +76,7 @@
             <p><a href="mailto:info@gipsmir.com">info@gipsmir.com</a></p>
         </div>
         <div class="footer-legal">
-            <button type="button" id="impressum-link" class="footer-link">Impressum</button>
+            <button type="button" id="impressum-link" class="footer-link" data-i18n="impressumLink">Impressum</button>
         </div>
     </footer>
 
@@ -80,7 +84,7 @@
         <div class="modal-overlay" data-modal-close></div>
         <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="impressum-title">
             <button type="button" class="modal-close" data-modal-close aria-label="Schließen">&times;</button>
-            <h2 id="impressum-title" class="modal-title">Impressum</h2>
+            <h2 id="impressum-title" class="modal-title" data-i18n="modalTitle">Impressum</h2>
             <p class="modal-lorem">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
                 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -98,9 +102,9 @@
                 <p>Skulptur + Raum</p>
                 <p>Kopenhagener Strasse 5</p>
                 <p>10437 Berlin</p>
-                <p>Telefon: +49 (0)178 / 8452485</p>
-                <p>E-Mail: info@gipsmir.com</p>
-                <p>Steuernummer: 31/557/62146</p>
+                <p><span data-i18n="modalPhoneLabel">Telefon:</span> +49 (0)178 / 8452485</p>
+                <p><span data-i18n="modalEmailLabel">E-Mail:</span> info@gipsmir.com</p>
+                <p><span data-i18n="modalTaxLabel">Steuernummer:</span> 31/557/62146</p>
             </div>
         </div>
     </div>

@@ -1,0 +1,28 @@
+{
+    "de": {
+        "introTitle": "Gips mir",
+        "introText": "Bildhauerei, Reliefs, Plastische Gestaltung, Assemblage, Modell- und Formbau, Casting, Farbgebung, Vergoldung, Putz- und Spachteltechniken",
+        "galleryTitle": "Galerie",
+        "loadMore": "Mehr anzeigen",
+        "bioText": "Stilgrenzen spielen für mich keine Rolle. Ob ein Werk klassisch, abstrakt oder extravagant wird, bleibt bis zum Entstehungsprozess offen. Ich sammle die Eindrücke meines Alltags und verwebe sie mit meinen Gedanken. Das Ergebnis ist reine Diversität. Skulptur und Raum formen eine Symbiose, die sich in freien Arbeiten, visionärer „Kunst am Bau\" und maßgeschneiderten Auftragswerken entfaltet. Getragen von einer Leidenschaft, die mit jeder neuen Form reift, antworte ich auf die Architektur und die Wünsche meiner Auftraggeber. Meine Umgebung ist mein Resonanzraum: Offene Augen und Ohren sind die Quelle meiner Inspiration auf dieser lebenslangen, spannenden Entdeckungsreise.",
+        "referencesTitle": "Referenzen",
+        "impressumLink": "Impressum",
+        "modalTitle": "Impressum",
+        "modalPhoneLabel": "Telefon:",
+        "modalEmailLabel": "E-Mail:",
+        "modalTaxLabel": "Steuernummer:"
+    },
+    "en": {
+        "introTitle": "Cast me",
+        "introText": "Sculpture, Reliefs, Plastic Design, Assemblage, Model and Mould Making, Casting, Colouring, Gilding, Plastering and Finishing Techniques",
+        "galleryTitle": "Gallery",
+        "loadMore": "Show more",
+        "bioText": "Stylistic boundaries play no role for me. Whether a piece becomes classical, abstract or extravagant stays open until the very process of its creation. I gather the impressions of my everyday life and weave them together with my thoughts. The result is pure diversity. Sculpture and Space form a symbiosis that unfolds in free works, visionary \"art in architecture\" and bespoke commissions. Carried by a passion that matures with every new form, I respond to the architecture and the wishes of my clients. My surroundings are my sounding board: open eyes and ears are the source of my inspiration on this lifelong, exciting journey of discovery.",
+        "referencesTitle": "References",
+        "impressumLink": "Legal Notice",
+        "modalTitle": "Legal Notice",
+        "modalPhoneLabel": "Phone:",
+        "modalEmailLabel": "Email:",
+        "modalTaxLabel": "Tax number:"
+    }
+}
