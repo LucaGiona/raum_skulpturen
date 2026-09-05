@@ -1,6 +1,8 @@
  .logo-test {
   padding: 40px;
   background: #b92626; /* nur zum Testen */
+  display: flex;
+  justify-content: center;
 }
 
 .logo-test img {
@@ -9,4 +11,29 @@
 }
 .monkey{
     max-width: 300px;
+}
+
+.intro {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+    color: #222;
+}
+
+.intro-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+}
+
+.intro-text {
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 1.7;
+    color: #555;
+    text-transform: uppercase;
 }
