@@ -31,9 +31,10 @@ body {
 }
 
 .header-controls {
-  position: absolute;
+  position: fixed;
   top: 16px;
   right: 20px;
+  z-index: 50;
   display: flex;
   gap: 8px;
 }
@@ -74,9 +75,10 @@ body {
 }
 
 .audio-toggle {
-  position: absolute;
+  position: fixed;
   top: 16px;
   left: 20px;
+  z-index: 50;
 }
 
  .logo-test {
@@ -253,6 +255,13 @@ body {
     color: var(--color-footer-text-strong);
 }
 
+.footer-legal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
 .footer-link {
     background: none;
     border: none;
@@ -274,6 +283,10 @@ body {
     .site-footer {
         flex-direction: column;
         text-align: center;
+    }
+
+    .footer-legal {
+        align-items: center;
     }
 }
 
