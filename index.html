@@ -33,13 +33,23 @@
     </p>
 </section>
 
+    <section class="gallery-section" id="gallery">
     <h1 class="gallery-title" data-i18n="galleryTitle">Galerie</h1>
 
-    <div class="gallery-grid" id="gallery-grid"></div>
+    <div class="gallery-categories" role="group" aria-label="Galeriekategorie">
+        <button class="gallery-category is-active" type="button" data-gallery="works" aria-pressed="true" data-i18n="galleryWorks">Arbeiten</button>
+        <button class="gallery-category" type="button" data-gallery="sculptures" aria-pressed="false" data-i18n="gallerySculptures">Skulpturen</button>
+    </div>
+
+    <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
 
     <div class="gallery-more-wrap">
-        <button id="load-more" class="load-more-btn" data-i18n="loadMore">Mehr anzeigen</button>
+        <button id="gallery-toggle" class="load-more-btn" type="button">
+            <span data-action-label="more" data-i18n="loadMore">Mehr anzeigen</span>
+            <span data-action-label="less" data-i18n="showLess" hidden>Weniger anzeigen</span>
+        </button>
     </div>
+    </section>
 <section class="bio">
     <img class="bio-portrait" src="/assets/protrait.jpeg" alt="Göran Thie">
     <div class="bio-content">
