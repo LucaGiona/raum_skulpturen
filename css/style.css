@@ -1,0 +1,12 @@
+ .logo-test {
+  padding: 40px;
+  background: #b92626; /* nur zum Testen */
+}
+
+.logo-test img {
+  width: 500px;
+  max-width: 100%;
+}
+.monkey{
+    max-width: 300px;
+}
