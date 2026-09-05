@@ -1,11 +1,16 @@
 .gallery-section {
     position: relative;
     scroll-margin-top: 16px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .gallery-title {
     text-align: center;
     font-family: sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: var(--color-accent);
     margin: 30px 0;
 }
 
@@ -41,7 +46,7 @@
 .gallery-category.is-active {
     border-color: var(--color-accent);
     background: var(--color-accent);
-    color: #fff;
+    color: var(--color-on-accent);
 }
 
 .gallery-category:focus-visible,
