@@ -13,7 +13,16 @@
         "modalTitle": "Impressum",
         "modalPhoneLabel": "Telefon:",
         "modalEmailLabel": "E-Mail:",
-        "modalTaxLabel": "Steuernummer:"
+        "modalTaxLabel": "Steuernummer:",
+        "contactTitle": "Kontakt",
+        "contactHint": "* Pflichtfeld",
+        "contactFirstname": "Vorname",
+        "contactLastname": "Name",
+        "contactEmail": "E-Mail",
+        "contactPhone": "Telefon",
+        "contactMessage": "Nachricht",
+        "contactSubmit": "Absenden",
+        "contactAlert": "Danke, {firstname}! Deine Nachricht wurde erfasst. Der Versand ans Team wird bald freigeschaltet."
     },
     "en": {
         "introTitle": "Cast me",
@@ -25,10 +34,19 @@
         "showLess": "Show less",
         "bioText": "Stylistic boundaries play no role for me. Whether a piece becomes classical, abstract or extravagant stays open until the very process of its creation. I gather the impressions of my everyday life and weave them together with my thoughts. The result is pure diversity. Sculpture and Space form a symbiosis that unfolds in free works, visionary \"art in architecture\" and bespoke commissions. Carried by a passion that matures with every new form, I respond to the architecture and the wishes of my clients. My surroundings are my sounding board: open eyes and ears are the source of my inspiration on this lifelong, exciting journey of discovery.",
         "referencesTitle": "References",
-        "impressumLink": "Legal Notice",
-        "modalTitle": "Legal Notice",
+        "impressumLink": "Impressum",
+        "modalTitle": "Impressum (Legal Notice)",
         "modalPhoneLabel": "Phone:",
         "modalEmailLabel": "Email:",
-        "modalTaxLabel": "Tax number:"
+        "modalTaxLabel": "Tax number:",
+        "contactTitle": "Contact",
+        "contactHint": "* Required field",
+        "contactFirstname": "First name",
+        "contactLastname": "Last name",
+        "contactEmail": "Email",
+        "contactPhone": "Phone",
+        "contactMessage": "Message",
+        "contactSubmit": "Send",
+        "contactAlert": "Thank you, {firstname}! Your message has been recorded. Sending to the team will be enabled soon."
     }
 }

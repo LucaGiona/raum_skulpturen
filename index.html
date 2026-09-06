@@ -100,33 +100,33 @@
 </section>
 <div class="section-divider"></div>
 <section class="contact" id="contact">
-    <h2 class="contact-title">Kontakt</h2>
-    <p class="contact-hint">* Pflichtfeld</p>
+    <h2 class="contact-title" data-i18n="contactTitle">Kontakt</h2>
+    <p class="contact-hint" data-i18n="contactHint">* Pflichtfeld</p>
     <form class="contact-form" id="contact-form" novalidate>
         <div class="form-row">
             <div class="form-field">
-                <label for="contact-firstname">Vorname <span class="required-marker">*</span></label>
+                <label for="contact-firstname"><span data-i18n="contactFirstname">Vorname</span> <span class="required-marker">*</span></label>
                 <input type="text" id="contact-firstname" name="firstname" required>
             </div>
 
             <div class="form-field">
-                <label for="contact-lastname">Name <span class="required-marker">*</span></label>
+                <label for="contact-lastname"><span data-i18n="contactLastname">Name</span> <span class="required-marker">*</span></label>
                 <input type="text" id="contact-lastname" name="lastname" required>
             </div>
         </div>
 
         <div class="form-field">
-            <label for="contact-email">E-Mail <span class="required-marker">*</span></label>
+            <label for="contact-email"><span data-i18n="contactEmail">E-Mail</span> <span class="required-marker">*</span></label>
             <input type="email" id="contact-email" name="email" required>
         </div>
 
         <div class="form-field">
-            <label for="contact-phone">Telefon</label>
+            <label for="contact-phone" data-i18n="contactPhone">Telefon</label>
             <input type="tel" id="contact-phone" name="phone">
         </div>
 
         <div class="form-field">
-            <label for="contact-message">Nachricht <span class="required-marker">*</span></label>
+            <label for="contact-message"><span data-i18n="contactMessage">Nachricht</span> <span class="required-marker">*</span></label>
             <textarea id="contact-message" name="message" rows="6" required></textarea>
         </div>
 
@@ -135,7 +135,7 @@
             <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
         </div>
 
-        <button type="submit" class="contact-submit">Absenden</button>
+        <button type="submit" class="contact-submit" data-i18n="contactSubmit">Absenden</button>
     </form>
 </section>
     <footer class="site-footer">
