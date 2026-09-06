@@ -2,10 +2,15 @@ const STORAGE_KEY = "site-theme";
 const DEFAULT_THEME = "dark";
 
 const toggleBtn = document.getElementById("theme-toggle");
+const sunIcon = toggleBtn.querySelector('[data-theme-icon="sun"]');
+const moonIcon = toggleBtn.querySelector('[data-theme-icon="moon"]');
 
 function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
-    toggleBtn.textContent = theme === "dark" ? "☀️" : "🌙";
+    const isDark = theme === "dark";
+    sunIcon.hidden = !isDark;
+    moonIcon.hidden = isDark;
+    toggleBtn.setAttribute("aria-label", isDark ? "Helles Farbschema aktivieren" : "Dunkles Farbschema aktivieren");
     localStorage.setItem(STORAGE_KEY, theme);
 }
 
