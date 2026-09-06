@@ -16,6 +16,7 @@
 
 </head>
 <body>
+    <div class="hero">
     <header class="site-header">
     <button type="button" id="audio-toggle" class="control-btn icon-btn audio-toggle" aria-pressed="false" aria-label="Ton einschalten">
         <svg data-icon="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" hidden>
@@ -31,8 +32,12 @@
     </button>
     <audio id="site-audio" src="/audio/02%20Sun.m4a" loop preload="none"></audio>
     <div class="logo-test">
-        <img class="logo-symbol" src="/assets/logos/logo01.png" alt="">
-        <img class="logo-wordmark" src="/assets/logos/S+R-Logo_1.png" alt="Skulptur und Raum">
+        <div class="logo-plaque logo-symbol-wrap">
+            <img class="logo-symbol" src="/assets/logos/logo01.png" alt="">
+        </div>
+        <div class="logo-plaque logo-wordmark-wrap">
+            <img class="logo-wordmark" src="/assets/logos/S+R-Logo_1.png" alt="Skulptur und Raum">
+        </div>
     </div>
     <div class="header-controls">
         <button type="button" id="lang-toggle" class="control-btn" aria-label="Switch language">EN</button>
@@ -49,6 +54,7 @@
         Putz- und Spachteltechniken
     </p>
 </section>
+    </div>
 
     <section class="gallery-section" id="gallery">
     <h1 class="gallery-title" data-i18n="galleryTitle">Galerie</h1>
