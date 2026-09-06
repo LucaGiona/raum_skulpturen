@@ -6,3 +6,9 @@ Icon?
 ._*
 .Spotlight-V100
 .Trashes
+
+# Lokale/echte Mail-Zugangsdaten - niemals committen
+mail-config.php
+
+# Admin-Zugangsdaten - niemals committen
+admin/config.php

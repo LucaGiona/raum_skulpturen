@@ -1,6 +1,4 @@
-// Diese Datei wird automatisch aus js/data/images.json erzeugt.
-// Bitte nicht von Hand bearbeiten - Aenderungen im admin/-Bereich vornehmen.
-export const galleries = {
+{
     "works": {
         "path": "/assets/images/",
         "images": [
@@ -61,4 +59,4 @@ export const galleries = {
             "skizze-01-filter-04-sepia.jpg"
         ]
     }
-};
+}
