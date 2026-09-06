@@ -112,6 +112,11 @@ body {
 .icon-btn svg {
   width: 18px;
   height: 18px;
+  display: block;
+}
+
+.icon-btn svg[hidden] {
+  display: none;
 }
 
 .audio-toggle {
