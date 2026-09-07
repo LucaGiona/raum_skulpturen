@@ -377,19 +377,19 @@ body {
     color: var(--color-footer-text);
     background:
         url('/assets/logos/logo01.png') center 65%/auto 45% no-repeat,
-        radial-gradient(circle, var(--color-footer-radial-inner) 0%, var(--color-footer-radial-outer) 45%);
+        radial-gradient(circle at center 58%, var(--color-footer-radial-inner) 0%, var(--color-footer-radial-outer) 25%);
     background-position: center 65%, center center;
-    background-size: auto 45%, 100% 100%;
-    animation: footer-radial-pulse 6s ease-in-out infinite;
+    background-size: auto 52%, 100% 100%;
+    animation: footer-radial-pulse 14s ease-in-out infinite;
     border-radius: 8px;
 }
 
 @keyframes footer-radial-pulse {
     0%, 100% {
-        background-size: auto 45%, 100% 100%;
+        background-size: auto 52%, 100% 100%;
     }
     50% {
-        background-size: auto 45%, 130% 130%;
+        background-size: auto 52%, 230% 230%;
     }
 }
 
@@ -458,17 +458,17 @@ body {
         row-gap: 8px;
         background:
             url('/assets/logos/logo01.png') center 40%/auto 65% no-repeat,
-            radial-gradient(circle, var(--color-footer-radial-inner) 0%, var(--color-footer-radial-outer) 45%);
+            radial-gradient(circle at center 58%, var(--color-footer-radial-inner) 0%, var(--color-footer-radial-outer) 25%);
         background-position: center 40%, center center;
-        background-size: auto 65%, 100% 100%;
+        background-size: auto 72%, 100% 100%;
     }
 
     @keyframes footer-radial-pulse {
         0%, 100% {
-            background-size: auto 65%, 100% 100%;
+            background-size: auto 72%, 100% 100%;
         }
         50% {
-            background-size: auto 65%, 130% 130%;
+            background-size: auto 72%, 230% 230%;
         }
     }
 
