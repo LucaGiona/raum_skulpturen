@@ -1,6 +1,6 @@
 import { galleries } from "./data/images.js";
 
-const BATCH_SIZE = 8;
+const BATCH_SIZE = 6;
 let activeGallery = "works";
 let shownCount = BATCH_SIZE;
 
@@ -10,6 +10,8 @@ const categoryButtons = document.querySelectorAll("[data-gallery]");
 const moreLabel = toggleBtn.querySelector('[data-action-label="more"]');
 const lessLabel = toggleBtn.querySelector('[data-action-label="less"]');
 const gallerySection = document.getElementById("gallery");
+const visibleCount = document.getElementById("gallery-visible-count");
+const totalCount = document.getElementById("gallery-total-count");
 
 function scrollToGalleryStart() {
     gallerySection.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -38,6 +40,8 @@ function renderGallery() {
     });
 
     const isFullyExpanded = shownCount >= gallery.images.length;
+    visibleCount.textContent = visibleImages.length;
+    totalCount.textContent = gallery.images.length;
     toggleBtn.hidden = gallery.images.length <= BATCH_SIZE;
     moreLabel.hidden = isFullyExpanded;
     lessLabel.hidden = !isFullyExpanded;
