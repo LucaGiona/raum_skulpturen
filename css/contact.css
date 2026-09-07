@@ -36,12 +36,26 @@
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(to bottom, var(--color-bg), transparent 160px),
-        linear-gradient(to top, var(--color-bg), transparent 160px);
+        linear-gradient(to bottom,
+            var(--color-bg) 0%,
+            color-mix(in srgb, var(--color-bg) 70%, transparent) 35%,
+            color-mix(in srgb, var(--color-bg) 30%, transparent) 70%,
+            transparent 100%),
+        linear-gradient(to top,
+            var(--color-bg) 0%,
+            color-mix(in srgb, var(--color-bg) 70%, transparent) 35%,
+            color-mix(in srgb, var(--color-bg) 30%, transparent) 70%,
+            transparent 100%);
     background-position: top, bottom;
     background-repeat: no-repeat, no-repeat;
-    background-size: 100% 160px, 100% 160px;
+    background-size: 100% 200px, 100% 200px;
     pointer-events: none;
+}
+
+@media (min-width: 1200px) {
+    .contact::after {
+        background-size: 100% 260px, 100% 260px;
+    }
 }
 
 .contact > * {

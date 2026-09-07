@@ -343,7 +343,7 @@ body {
     color: var(--color-footer-text);
     background:
         url('/assets/logos/logo01.png') center 65%/auto 45% no-repeat,
-        radial-gradient(circle, #000000, #5c5c5c);
+        radial-gradient(circle, #5c5c5c 0%, #000000 45%);
     border-radius: 8px;
 }
 
@@ -406,7 +406,7 @@ body {
         row-gap: 8px;
         background:
             url('/assets/logos/logo01.png') center 40%/auto 65% no-repeat,
-            radial-gradient(circle, #000000, #5c5c5c);
+            radial-gradient(circle, #5c5c5c 0%, #000000 45%);
     }
 
     .footer-brand {
