@@ -7,7 +7,7 @@
   --color-accent: #d4af37;
   --color-accent-hover: #e9c766;
   --color-on-accent: #fff;
-  --color-footer-bg: #433f3f;
+  --color-footer-bg: rgba(67, 63, 63, 0.6);
   --color-footer-text: #bbb;
   --color-footer-text-strong: #fff;
 }
@@ -324,14 +324,17 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     gap: 24px;
     max-width: 1000px;
-    margin: 0 auto;
-    padding: 48px 20px;
+    margin: 0 auto 120px;
+    padding: 140px 20px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 0.9rem;
     color: var(--color-footer-text);
-    background: var(--color-footer-bg);
+    background:
+        url('/assets/logos/logo01.png') center 65%/auto 45% no-repeat,
+        radial-gradient(circle, #000000, #5c5c5c);
     border-radius: 8px;
 }
 
@@ -380,14 +383,53 @@ body {
     color: var(--color-accent-hover);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1040px) {
     .site-footer {
-        flex-direction: column;
-        text-align: center;
+        margin: 0 20px 120px;
+    }
+}
+
+@media (min-width: 601px) {
+    .site-footer {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 24px;
+        row-gap: 8px;
+        background:
+            url('/assets/logos/logo01.png') center 40%/auto 65% no-repeat,
+            radial-gradient(circle, #000000, #5c5c5c);
+    }
+
+    .footer-brand {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .footer-contact {
+        grid-column: 1;
+        grid-row: 2;
     }
 
     .footer-legal {
-        align-items: center;
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        align-self: center;
+        justify-self: end;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-footer {
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        min-height: 520px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .footer-contact {
+        margin-bottom: 400px;
     }
 }
 
