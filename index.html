@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,142 +17,167 @@
     <script src="/js/contact.js" type="module"></script>
 
 </head>
+
 <body>
     <div class="hero">
-    <header class="site-header">
-    <button type="button" id="audio-toggle" class="control-btn icon-btn audio-toggle" aria-pressed="false" aria-label="Ton einschalten">
-        <svg data-icon="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" hidden>
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-        </svg>
-        <svg data-icon="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <line x1="23" y1="9" x2="17" y2="15"></line>
-            <line x1="17" y1="9" x2="23" y2="15"></line>
-        </svg>
-    </button>
-    <audio id="site-audio" src="/audio/02%20Sun.m4a" loop preload="none"></audio>
-    <div class="logo-test">
-        <div class="logo-plaque logo-symbol-wrap">
-            <img class="logo-symbol" src="/assets/logos/logo01-header.png" width="229" height="344" alt="">
-        </div>
-        <div class="logo-plaque logo-wordmark-wrap">
-            <img class="logo-wordmark" src="/assets/logos/S+R-Logo_1.png" width="1417" height="710" alt="Skulptur und Raum">
-        </div>
-    </div>
-    <div class="header-controls">
-        <button type="button" id="lang-toggle" class="control-btn" aria-label="Switch language">EN</button>
-        <button type="button" id="theme-toggle" class="control-btn icon-btn" aria-label="Helles Farbschema aktivieren">
-            <svg data-theme-icon="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path>
-            </svg>
-            <svg data-theme-icon="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
-    </div>
-    </header>
-   
-<section class="intro">
-    <h3 class="intro-title" data-i18n="introTitle">Gips mir</h3>
-    <p class="intro-text" data-i18n="introText">
-        Bildhauerei, Reliefs, Plastische Gestaltung,
-        Assemblage, Modell- und Formbau, Casting,
-        Farbgebung, Vergoldung,
-        Putz- und Spachteltechniken
-    </p>
-</section>
+        <header class="site-header">
+            <button type="button" id="audio-toggle" class="control-btn icon-btn audio-toggle" aria-pressed="false"
+                aria-label="Ton einschalten">
+                <svg data-icon="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" hidden>
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+                <svg data-icon="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+            </button>
+            <audio id="site-audio" src="/audio/02%20Sun.m4a" loop preload="none"></audio>
+            <div class="logo-test">
+                <div class="logo-plaque logo-symbol-wrap">
+                    <img class="logo-symbol" src="/assets/logos/logo01-header.png" width="229" height="344" alt="">
+                </div>
+                <div class="logo-plaque logo-wordmark-wrap">
+                    <img class="logo-wordmark" src="/assets/logos/S+R-Logo_1.png" width="1417" height="710"
+                        alt="Skulptur und Raum">
+                </div>
+            </div>
+            <div class="header-controls">
+                <button type="button" id="lang-toggle" class="control-btn" aria-label="Switch language">EN</button>
+                <button type="button" id="theme-toggle" class="control-btn icon-btn"
+                    aria-label="Helles Farbschema aktivieren">
+                    <svg data-theme-icon="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41">
+                        </path>
+                    </svg>
+                    <svg data-theme-icon="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <section class="intro">
+            <h3 class="intro-title" data-i18n="introTitle">Gips mir</h3>
+            <p class="intro-text" data-i18n="introText">
+                Bildhauerei, Reliefs, Plastische Gestaltung,
+                Assemblage, Modell- und Formbau, Casting,
+                Farbgebung, Vergoldung,
+                Putz- und Spachteltechniken
+            </p>
+        </section>
     </div>
 
     <section class="gallery-section" id="gallery">
-    <h1 class="gallery-title" data-i18n="galleryTitle">Galerie</h1>
+        <h1 class="gallery-title" data-i18n="galleryTitle">Galerie</h1>
 
-    <div class="gallery-categories" role="group" aria-label="Galeriekategorie">
-        <button class="gallery-category is-active" type="button" data-gallery="works" aria-pressed="true" data-i18n="galleryWorks">Arbeiten</button>
-        <button class="gallery-category" type="button" data-gallery="sculptures" aria-pressed="false" data-i18n="gallerySculptures">Skulpturen</button>
-    </div>
+        <div class="gallery-categories" role="group" aria-label="Galeriekategorie">
+            <button class="gallery-category is-active" type="button" data-gallery="works" aria-pressed="true"
+                data-i18n="galleryWorks">Kunst am Bau</button>
+            <button class="gallery-category" type="button" data-gallery="sculptures" aria-pressed="false"
+                data-i18n="gallerySculptures">Skulpturen</button>
+        </div>
 
-    <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
+        <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
 
-    <div class="gallery-more-wrap">
-        <p class="gallery-count" role="status" aria-atomic="true">
-            <span id="gallery-visible-count">0</span> <span data-i18n="galleryCountOf">von</span>
-            <span id="gallery-total-count">0</span> <span data-i18n="galleryCountImages">Bildern</span>
-        </p>
-        <button id="gallery-toggle" class="load-more-btn" type="button">
-            <span data-action-label="more" data-i18n="loadMore">Mehr anzeigen</span>
-            <span data-action-label="less" data-i18n="showLess" hidden>Weniger anzeigen</span>
-        </button>
-    </div>
+        <div class="gallery-more-wrap">
+            <p class="gallery-count" role="status" aria-atomic="true">
+                <span id="gallery-visible-count">0</span> <span data-i18n="galleryCountOf">von</span>
+                <span id="gallery-total-count">0</span> <span data-i18n="galleryCountImages">Bildern</span>
+            </p>
+            <button id="gallery-toggle" class="load-more-btn" type="button">
+                <span data-action-label="more" data-i18n="loadMore">Mehr anzeigen</span>
+                <span data-action-label="less" data-i18n="showLess" hidden>Weniger anzeigen</span>
+            </button>
+        </div>
     </section>
-<div class="section-divider"></div>
-<section class="bio">
-    <img class="bio-portrait" src="/assets/images/PHOTO-2026-09-07-17-54-56.jpg" loading="lazy" decoding="async" alt="Göran Thie">
-    <div class="bio-content">
-        <h2 class="bio-name">Göran Thie</h2>
-        <p class="bio-text" data-i18n="bioText1">Stilgrenzen sind für mich aufgehoben. Meine Arbeiten entstehen aus dem Dialog zwischen Wahrnehmung, Gedanken und Material – frei, intuitiv und immer offen für das Unerwartete. Ästhetik und Provokation begegnen sich dabei ebenso wie Harmonie und Irritation.</p>
-        <p class="bio-text" data-i18n="bioText2">Skulptur ist für mich nie alleinstehend. Sie tritt in Beziehung zu ihrem Raum, nimmt Architektur auf und verändert deren Wahrnehmung. Besonders in der „Kunst am Bau“ wird dieser Dialog zum zentralen Gedanken: Das Werk wächst aus dem Ort, verbindet Kunst, Architektur und Atmosphäre und schafft eine unverwechselbare Identität.</p>
-        <p class="bio-text" data-i18n="bioText3">Ob freie Skulptur, visionäre Kunst am Bau oder individuelle Auftragsarbeit – jede Arbeit ist eine Antwort auf ihren Raum und ihre Zeit. Meine Inspiration liegt in der Welt um mich herum. Mit offenen Augen, Neugier und Leidenschaft begebe ich mich immer wieder auf die Suche nach neuen Formen und neuen Möglichkeiten.</p>
-    </div>
-</section>
-<div class="section-divider"></div>
-<section class="references">
-    <h2 class="references-title" data-i18n="referencesTitle">Referenzen</h2>
-    <ul class="references-list">
-        <li>Hotel Zoo Berlin</li>
-        <li>Bostich Berlin</li>
-        <li>Synagoge Berlin</li>
-        <li>Berliner Dom</li>
-        <li>Torbar Berlin</li>
-        <li>Park Sanssouci Potsdam</li>
-        <li>Dirk Bell</li>
-        <li>Drei Heiligen Könige Dresden</li>
-        <li>Auto Sixt</li>
-        <li>Galerie Skulptur + Raum Berlin Prenzlauer Berg</li>
-    </ul>
-</section>
-<div class="section-divider"></div>
-<section class="contact" id="contact">
-    <h2 class="contact-title" data-i18n="contactTitle">Kontakt</h2>
-    <p class="contact-hint" data-i18n="contactHint">* Pflichtfeld</p>
-    <form class="contact-form" id="contact-form" novalidate>
-        <div class="form-row">
-            <div class="form-field">
-                <label for="contact-firstname"><span data-i18n="contactFirstname">Vorname</span> <span class="required-marker">*</span></label>
-                <input type="text" id="contact-firstname" name="firstname" required>
+    <div class="section-divider"></div>
+    <section class="bio">
+        <img class="bio-portrait" src="/assets/images/portrait01.jpg" loading="lazy" decoding="async"
+            alt="Göran Thie">
+        <div class="bio-content">
+            <h2 class="bio-name">Göran Thie</h2>
+            <p class="bio-text" data-i18n="bioText1">Stilgrenzen sind für mich aufgehoben. Meine Arbeiten entstehen aus
+                dem Dialog zwischen Wahrnehmung, Gedanken und Material – frei, intuitiv und immer offen für das
+                Unerwartete. Ästhetik und Provokation begegnen sich dabei ebenso wie Harmonie und Irritation.</p>
+            <p class="bio-text" data-i18n="bioText2">Skulptur ist für mich nie alleinstehend. Sie tritt in Beziehung zu
+                ihrem Raum, nimmt Architektur auf und verändert deren Wahrnehmung. Besonders in der „Kunst am Bau“ wird
+                dieser Dialog zum zentralen Gedanken: Das Werk wächst aus dem Ort, verbindet Kunst, Architektur und
+                Atmosphäre und schafft eine unverwechselbare Identität.</p>
+            <p class="bio-text" data-i18n="bioText3">Ob freie Skulptur, visionäre Kunst am Bau oder individuelle
+                Auftragsarbeit – jede Arbeit ist eine Antwort auf ihren Raum und ihre Zeit. Meine Inspiration liegt in
+                der Welt um mich herum. Mit offenen Augen, Neugier und Leidenschaft begebe ich mich immer wieder auf die
+                Suche nach neuen Formen und neuen Möglichkeiten.</p>
+        </div>
+    </section>
+    <div class="section-divider"></div>
+    <section class="references">
+        <h2 class="references-title" data-i18n="referencesTitle">Referenzen</h2>
+        <ul class="references-list">
+            <li>Hotel Zoo Berlin</li>
+            <li>Bostich Berlin</li>
+            <li>Synagoge Berlin</li>
+            <li>Berliner Dom</li>
+            <li>Torbar Berlin</li>
+            <li>Park Sanssouci Potsdam</li>
+            <li>Dirk Bell</li>
+            <li>Drei Heiligen Könige Dresden</li>
+            <li>Auto Sixt</li>
+            <li>Galerie Skulptur + Raum Berlin Prenzlauer Berg</li>
+        </ul>
+    </section>
+    <div class="section-divider"></div>
+    <section class="contact" id="contact">
+        <h2 class="contact-title" data-i18n="contactTitle">Kontakt</h2>
+        <p class="contact-hint" data-i18n="contactHint">* Pflichtfeld</p>
+        <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="contact-firstname"><span data-i18n="contactFirstname">Vorname</span> <span
+                            class="required-marker">*</span></label>
+                    <input type="text" id="contact-firstname" name="firstname" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="contact-lastname"><span data-i18n="contactLastname">Name</span> <span
+                            class="required-marker">*</span></label>
+                    <input type="text" id="contact-lastname" name="lastname" required>
+                </div>
             </div>
 
             <div class="form-field">
-                <label for="contact-lastname"><span data-i18n="contactLastname">Name</span> <span class="required-marker">*</span></label>
-                <input type="text" id="contact-lastname" name="lastname" required>
+                <label for="contact-email"><span data-i18n="contactEmail">E-Mail</span> <span
+                        class="required-marker">*</span></label>
+                <input type="email" id="contact-email" name="email" required>
             </div>
-        </div>
 
-        <div class="form-field">
-            <label for="contact-email"><span data-i18n="contactEmail">E-Mail</span> <span class="required-marker">*</span></label>
-            <input type="email" id="contact-email" name="email" required>
-        </div>
+            <div class="form-field">
+                <label for="contact-phone" data-i18n="contactPhone">Telefon</label>
+                <input type="tel" id="contact-phone" name="phone">
+            </div>
 
-        <div class="form-field">
-            <label for="contact-phone" data-i18n="contactPhone">Telefon</label>
-            <input type="tel" id="contact-phone" name="phone">
-        </div>
+            <div class="form-field">
+                <label for="contact-message"><span data-i18n="contactMessage">Nachricht</span> <span
+                        class="required-marker">*</span></label>
+                <textarea id="contact-message" name="message" rows="6" required></textarea>
+            </div>
 
-        <div class="form-field">
-            <label for="contact-message"><span data-i18n="contactMessage">Nachricht</span> <span class="required-marker">*</span></label>
-            <textarea id="contact-message" name="message" rows="6" required></textarea>
-        </div>
+            <div class="form-field form-field--honeypot" aria-hidden="true">
+                <label for="contact-website">Website</label>
+                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
 
-        <div class="form-field form-field--honeypot" aria-hidden="true">
-            <label for="contact-website">Website</label>
-            <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
-        </div>
-
-        <button type="submit" class="contact-submit" data-i18n="contactSubmit">Absenden</button>
-    </form>
-</section>
+            <button type="submit" class="contact-submit" data-i18n="contactSubmit">Absenden</button>
+        </form>
+    </section>
     <footer class="site-footer">
         <div class="footer-brand">
             <p class="footer-company">Skulptur + Raum</p>
@@ -197,6 +223,7 @@
             </div>
         </div>
     </div>
-   
+
 </body>
+
 </html>
