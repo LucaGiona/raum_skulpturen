@@ -69,8 +69,9 @@ $errorMessage = $_GET['error'] ?? '';
             </div>
 
             <div class="admin-field">
-                <label for="image">Bilddatei (JPG, PNG oder WebP, max. 15&nbsp;MB)</label>
-                <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp" required>
+                <label for="image">Bilddatei</label>
+                <small id="image-hint">JPG oder PNG, maximal 2&nbsp;MB. Empfohlen: 600–1600 Pixel an der längsten Seite.</small>
+                <input type="file" id="image" name="image" accept="image/jpeg,image/png" aria-describedby="image-hint" required>
             </div>
 
             <button type="submit">Hochladen</button>

@@ -9,10 +9,9 @@ require_login();
 const ALLOWED_MIME_TYPES = [
     'image/jpeg' => 'jpg',
     'image/png' => 'png',
-    'image/webp' => 'webp',
 ];
 
-const MAX_FILE_SIZE_BYTES = 15 * 1024 * 1024; // 15 MB
+const MAX_FILE_SIZE_BYTES = 2 * 1024 * 1024; // 2 MB
 const MAX_IMAGE_WIDTH = 2400; // groessere Uploads werden herunterskaliert
 
 function fail(string $message): void
@@ -36,6 +35,10 @@ if (!isset($galleries[$category])) {
     fail('Unbekannte Kategorie.');
 }
 
+if (isset($_FILES['image']) && in_array($_FILES['image']['error'], [UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE], true)) {
+    fail('Die Datei ist zu groß. Bitte ein JPG- oder PNG-Bild mit maximal 2 MB auswählen.');
+}
+
 if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
     fail('Bild-Upload fehlgeschlagen (keine Datei oder Upload-Fehler).');
 }
@@ -43,14 +46,14 @@ if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
 $file = $_FILES['image'];
 
 if ($file['size'] > MAX_FILE_SIZE_BYTES) {
-    fail('Die Datei ist zu gross (maximal 15 MB).');
+    fail('Die Datei ist zu groß (maximal 2 MB).');
 }
 
 $finfo = new finfo(FILEINFO_MIME_TYPE);
 $mimeType = $finfo->file($file['tmp_name']);
 
 if (!isset(ALLOWED_MIME_TYPES[$mimeType])) {
-    fail('Nur JPG, PNG oder WebP Bilder sind erlaubt.');
+    fail('Nur JPG- oder PNG-Bilder sind erlaubt.');
 }
 
 $extension = ALLOWED_MIME_TYPES[$mimeType];
