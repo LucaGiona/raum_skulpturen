@@ -212,6 +212,7 @@ body {
     flex: 0 0 280px;
     aspect-ratio: 3 / 4;
     object-fit: cover;
+    filter: grayscale(1) brightness(1.25) contrast(1.05);
     border-radius: 4px;
 }
 
