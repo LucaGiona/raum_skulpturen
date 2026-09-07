@@ -232,6 +232,26 @@ body {
     color: var(--color-text-muted);
 }
 
+@media (min-width: 721px) {
+    .audio-toggle {
+        left: 40px;
+    }
+
+    .header-controls {
+        right: 40px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .audio-toggle {
+        left: 140px;
+    }
+
+    .header-controls {
+        right: 140px;
+    }
+}
+
 @media (max-width: 720px) {
     .logo-test {
         padding-top: 76px;
