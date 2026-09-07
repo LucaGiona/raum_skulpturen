@@ -10,6 +10,8 @@
   --color-footer-bg: rgba(67, 63, 63, 0.6);
   --color-footer-text: #bbb;
   --color-footer-text-strong: #fff;
+  --color-footer-radial-inner: #5c5c5c;
+  --color-footer-radial-outer: #000000;
 }
 
 :root[data-theme="light"] {
@@ -18,6 +20,10 @@
   --color-text: #222;
   --color-text-muted: #555;
   --color-border: #2a2929;
+  --color-footer-text: #555;
+  --color-footer-text-strong: #111;
+  --color-footer-radial-inner: #ffffff;
+  --color-footer-radial-outer: #ececec;
 }
 
 body {
@@ -343,7 +349,7 @@ body {
     color: var(--color-footer-text);
     background:
         url('/assets/logos/logo01.png') center 65%/auto 45% no-repeat,
-        radial-gradient(circle, #5c5c5c 0%, #000000 45%);
+        radial-gradient(circle, var(--color-footer-radial-inner) 0%, var(--color-footer-radial-outer) 45%);
     border-radius: 8px;
 }
 
@@ -406,7 +412,7 @@ body {
         row-gap: 8px;
         background:
             url('/assets/logos/logo01.png') center 40%/auto 65% no-repeat,
-            radial-gradient(circle, #5c5c5c 0%, #000000 45%);
+            radial-gradient(circle, var(--color-footer-radial-inner) 0%, var(--color-footer-radial-outer) 45%);
     }
 
     .footer-brand {
