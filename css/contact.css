@@ -1,16 +1,47 @@
 .contact {
     position: relative;
     margin: 80px 0 80px;
-    padding: 80px 20px;
+    padding: 140px 20px;
 
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: url('/assets/background-images/titelbild_01-tablet.jpg') center/cover no-repeat;
+}
+
+@media (max-width: 600px) {
+    .contact {
+        background-image: url('/assets/background-images/titelbild_01-mobile.jpg');
+    }
+}
+
+@media (min-width: 1200px) {
+    .contact {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 180px;
+        padding-bottom: 180px;
+        background-image: url('/assets/background-images/titelbild_01.jpg');
+    }
 }
 
 .contact::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.contact::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to bottom, var(--color-bg), transparent 160px),
+        linear-gradient(to top, var(--color-bg), transparent 160px);
+    background-position: top, bottom;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100% 160px, 100% 160px;
+    pointer-events: none;
 }
 
 .contact > * {
@@ -150,15 +181,6 @@
 .contact-submit:hover {
     background: var(--color-accent);
     color: #fff;
-}
-
-:root[data-theme="light"] .contact::before {
-    background: transparent;
-}
-
-:root[data-theme="light"] .contact-hint,
-:root[data-theme="light"] .form-field label {
-    color: var(--color-text-muted);
 }
 
 :root[data-theme="light"] .form-field input,
