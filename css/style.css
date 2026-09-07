@@ -41,14 +41,41 @@ body {
 
 .hero {
   position: relative;
+  overflow: hidden;
   display: flow-root;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background: url('/assets/background-images/bodemuseum.jpg') center/cover no-repeat;
+  transform-origin: center;
+  animation: hero-zoom 10s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes hero-zoom {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.65);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg {
+    animation: none;
+  }
 }
 
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: rgba(0, 0, 0, 0.55);
 }
 
@@ -59,13 +86,14 @@ body {
   bottom: 0;
   left: 0;
   height: 160px;
+  z-index: 2;
   background: linear-gradient(to bottom, transparent, var(--color-bg));
   pointer-events: none;
 }
 
-.hero > * {
+.hero > *:not(.hero-bg) {
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .hero .intro-text {
