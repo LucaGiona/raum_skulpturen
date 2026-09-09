@@ -26,7 +26,7 @@
         "contactPhone": "Telefon",
         "contactMessage": "Nachricht",
         "contactSubmit": "Absenden",
-        "contactAlert": "Danke, {firstname}! Deine Nachricht wurde erfasst. Der Versand ans Team wird bald freigeschaltet."
+        "contactAlert": "Danke, {firstname}! Deine Nachricht wurde verschickt."
     },
     "en": {
         "introTitle": "Cast me",
@@ -55,6 +55,6 @@
         "contactPhone": "Phone",
         "contactMessage": "Message",
         "contactSubmit": "Send",
-        "contactAlert": "Thank you, {firstname}! Your message has been recorded. Sending to the team will be enabled soon."
+        "contactAlert": "Thank you, {firstname}! Your message has been sent."
     }
 }

@@ -1,24 +1,46 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/lib/mail-sender.php';
+
 $errors = [];
 $success = false;
+$firstname = '';
+$lastname = '';
 $email = '';
+$phone = '';
 $message = '';
 
+$isAjax = ($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'fetch'
+    || str_contains($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $firstname = trim($_POST['firstname'] ?? '');
+    $lastname = trim($_POST['lastname'] ?? '');
     $email = trim($_POST['email'] ?? '');
+    $phone = trim($_POST['phone'] ?? '');
     $message = trim($_POST['message'] ?? '');
     $honeypot = trim($_POST['website'] ?? '');
 
     if ($honeypot !== '') {
-        // Likely a bot: pretend success without sending anything.
+        // Vermutlich ein Bot: Erfolg vortäuschen, ohne etwas zu versenden.
         $success = true;
-        $email = '';
-        $message = '';
+        $firstname = $lastname = $email = $phone = $message = '';
     } else {
+        if ($firstname === '') {
+            $errors['firstname'] = 'Bitte einen Vornamen angeben.';
+        }
+
+        if ($lastname === '') {
+            $errors['lastname'] = 'Bitte einen Namen angeben.';
+        }
+
         if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Bitte eine gültige E-Mail-Adresse angeben.';
+        }
+
+        if ($phone !== '' && !preg_match('/^[0-9+\-\/\s()]{3,30}$/', $phone)) {
+            $errors['phone'] = 'Bitte eine gültige Telefonnummer angeben.';
         }
 
         if ($message === '') {
@@ -30,23 +52,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (empty($errors)) {
-            $to = 'info@gipsmir.com';
+            $config = mail_config();
+            $to = $config['contact_to_email'] ?? 'info@gipsmir.com';
             $subject = 'Neue Kontaktanfrage über die Website';
-            $body = "E-Mail: {$email}\n\nNachricht:\n{$message}\n";
-            $headers = "From: no-reply@gipsmir.com\r\n"
-                . "Reply-To: {$email}\r\n"
-                . "Content-Type: text/plain; charset=UTF-8";
+            $body = "Name: {$firstname} {$lastname}\n"
+                . "E-Mail: {$email}\n"
+                . "Telefon: " . ($phone !== '' ? $phone : '-') . "\n\n"
+                . "Nachricht:\n{$message}\n";
 
-            $sent = mail($to, $subject, $body, $headers);
+            $result = send_mail($to, $subject, $body, $email);
 
-            if ($sent) {
+            if ($result['sent']) {
                 $success = true;
-                $email = '';
-                $message = '';
+                $firstname = $lastname = $email = $phone = $message = '';
             } else {
                 $errors['general'] = 'Die Nachricht konnte nicht gesendet werden. Bitte versuche es später erneut.';
+                if ($result['debug'] !== null) {
+                    $errors['debug'] = $result['debug'];
+                }
             }
         }
+    }
+
+    if ($isAjax) {
+        header('Content-Type: application/json; charset=UTF-8');
+        echo json_encode([
+            'success' => $success,
+            'errors' => $errors,
+        ]);
+        exit;
     }
 }
 ?>
@@ -79,7 +113,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="contact-error" role="alert"><?= htmlspecialchars($errors['general']) ?></p>
         <?php endif; ?>
 
+        <?php if (!empty($errors['debug'])): ?>
+            <p class="contact-error" role="alert"><strong>Debug (nur zum Testen sichtbar):</strong> <?= htmlspecialchars($errors['debug']) ?></p>
+        <?php endif; ?>
+
         <form class="contact-form" method="post" action="/contact.php" novalidate>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="firstname">Vorname</label>
+                    <input type="text" id="firstname" name="firstname" required value="<?= htmlspecialchars($firstname) ?>">
+                    <?php if (!empty($errors['firstname'])): ?>
+                        <span class="field-error"><?= htmlspecialchars($errors['firstname']) ?></span>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-field">
+                    <label for="lastname">Name</label>
+                    <input type="text" id="lastname" name="lastname" required value="<?= htmlspecialchars($lastname) ?>">
+                    <?php if (!empty($errors['lastname'])): ?>
+                        <span class="field-error"><?= htmlspecialchars($errors['lastname']) ?></span>
+                    <?php endif; ?>
+                </div>
+            </div>
+
             <div class="form-field">
                 <label for="email">E-Mail</label>
                 <input
@@ -92,6 +148,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 >
                 <?php if (!empty($errors['email'])): ?>
                     <span class="field-error"><?= htmlspecialchars($errors['email']) ?></span>
+                <?php endif; ?>
+            </div>
+
+            <div class="form-field">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" value="<?= htmlspecialchars($phone) ?>">
+                <?php if (!empty($errors['phone'])): ?>
+                    <span class="field-error"><?= htmlspecialchars($errors['phone']) ?></span>
                 <?php endif; ?>
             </div>
 
