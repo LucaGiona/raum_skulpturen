@@ -2,7 +2,10 @@
     position: relative;
     z-index: 0;
     overflow: hidden;
-    margin: 80px 0 80px;
+    /* Small negative top margin: pulls the section up into
+       .guestbook's masked-out bottom edge so the two photos blend
+       into each other directly instead of meeting across a gap. */
+    margin: -120px 0 80px;
     padding: 140px 20px;
     --parallax-amplitude: 60px;
 
@@ -11,6 +14,7 @@
 
 @media (min-width: 601px) {
     .contact {
+        margin-top: -180px;
         padding-top: 220px;
         padding-bottom: 220px;
         --parallax-amplitude: 140px;
@@ -20,6 +24,7 @@
 @media (min-width: 1200px) {
     .contact {
         max-width: 1200px;
+        margin-top: -260px;
         margin-left: auto;
         margin-right: auto;
         padding-top: 280px;
@@ -64,26 +69,25 @@
     position: absolute;
     inset: 0;
     z-index: 2;
+    /* Only the bottom edge fades to black (into the footer). The top
+       edge no longer does - .guestbook's photo fades out into this
+       section's own photo instead, so a second dark vignette here
+       would just add an unwanted black band on top of that blend. */
     background-image:
-        linear-gradient(to bottom,
-            var(--color-bg) 0%,
-            color-mix(in srgb, var(--color-bg) 70%, transparent) 35%,
-            color-mix(in srgb, var(--color-bg) 30%, transparent) 70%,
-            transparent 100%),
         linear-gradient(to top,
             var(--color-bg) 0%,
             color-mix(in srgb, var(--color-bg) 70%, transparent) 35%,
             color-mix(in srgb, var(--color-bg) 30%, transparent) 70%,
             transparent 100%);
-    background-position: top, bottom;
-    background-repeat: no-repeat, no-repeat;
-    background-size: 100% 200px, 100% 200px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 200px;
     pointer-events: none;
 }
 
 @media (min-width: 1200px) {
     .contact::after {
-        background-size: 100% 260px, 100% 260px;
+        background-size: 100% 260px;
     }
 }
 

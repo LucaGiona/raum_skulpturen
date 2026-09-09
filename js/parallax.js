@@ -1,11 +1,13 @@
-const bg = document.querySelector(".contact-bg");
-const section = document.querySelector(".contact");
-
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (bg && section && !prefersReducedMotion) {
+function initParallax(bgSelector, sectionSelector, defaultAmplitude) {
+    const bg = document.querySelector(bgSelector);
+    const section = document.querySelector(sectionSelector);
+
+    if (!bg || !section || prefersReducedMotion) return;
+
     let ticking = false;
-    let amplitude = 60;
+    let amplitude = defaultAmplitude;
 
     const readAmplitude = () => {
         const value = getComputedStyle(section).getPropertyValue("--parallax-amplitude");
@@ -42,3 +44,6 @@ if (bg && section && !prefersReducedMotion) {
     readAmplitude();
     update();
 }
+
+initParallax(".contact-bg", ".contact", 60);
+initParallax(".guestbook-bg-img", ".guestbook", 50);

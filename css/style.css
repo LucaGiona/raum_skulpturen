@@ -14,6 +14,12 @@
   font-display: swap;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --color-bg: #000;
   --color-surface: #111;
@@ -176,7 +182,6 @@ body {
   --stucco-overlap: clamp(100px, 20vw, 260px);
   position: relative;
   z-index: 2;
-  box-sizing: border-box;
   width: 100%;
   max-width: 1200px;
   aspect-ratio: 4 / 3;
@@ -335,7 +340,6 @@ body {
 }
 
  .logo-test {
-  box-sizing: border-box;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -521,6 +525,82 @@ body {
     height: 4px;
     border-radius: 50%;
     background: var(--color-border);
+}
+
+.guestbook {
+  position: relative;
+  /* Higher than .contact's z-index (0): in their overlap zone,
+     .guestbook needs to paint on top so its own fade-to-transparent
+     is what's visible, revealing .contact's photo underneath as it
+     fades - not the other way around. */
+  z-index: 1;
+  overflow: hidden;
+  min-height: clamp(360px, 58vw, 680px);
+  --parallax-amplitude: 50px;
+}
+
+@media (min-width: 601px) {
+  .guestbook {
+    --parallax-amplitude: 100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .guestbook {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    --parallax-amplitude: 120px;
+  }
+}
+
+/* Outer layer: stays exactly on the visible box (inset: 0) and carries
+   the fade mask, clipped by overflow:hidden. The mask must sit on a
+   layer sized to the visible window, not the extended parallax image
+   below - otherwise the gradient percentages stretch over the wrong
+   height and the carefully-tuned cross-fade breaks. */
+.guestbook-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  /* Fades the photo itself to transparent over a long stretch at
+     the bottom (no black band) so .contact's photo, which overlaps
+     upward underneath, gradually takes over - a real cross-fade
+     rather than a snap. */
+  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+}
+
+/* Inner layer: extended above/below the visible box so the JS-driven
+   translateY (scroll parallax) never reveals an edge, same pattern as
+   .contact-bg. */
+.guestbook-bg-img {
+  position: absolute;
+  top: calc(-1 * (var(--parallax-amplitude) + 40px));
+  left: 0;
+  right: 0;
+  height: calc(100% + (var(--parallax-amplitude) + 40px) * 2);
+  /* Left-centered on purpose: the atelier photo is a wide panorama
+     and its most interesting part (the workbench, sculpted heads)
+     sits on the left side of the frame. */
+  background: url('/assets/background-images/attelier_01.jpeg') left center/cover no-repeat;
+  will-change: transform;
+}
+
+.guestbook::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* Only fades in at the top (into the plain page background above);
+     the bottom is handled by the mask on .guestbook-bg instead, so
+     there is no opaque black band before .contact. */
+  background: linear-gradient(to bottom,
+    var(--color-bg) 0%,
+    transparent 18%,
+    transparent 100%);
 }
 
 .site-footer {
