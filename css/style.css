@@ -603,6 +603,33 @@ body {
     transparent 100%);
 }
 
+.guestbook-link {
+  position: absolute;
+  right: 6%;
+  top: 22%;
+  z-index: 2;
+  transform: translateY(-50%);
+  padding: 12px 32px;
+  font-family: 'Sora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--color-accent);
+  background: rgba(0, 0, 0, 0.72);
+  border: 2px solid var(--color-accent);
+  border-radius: 30px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.guestbook-link:hover,
+.guestbook-link:focus-visible {
+  background: var(--color-accent);
+  color: #fff;
+}
+
 .site-footer {
     display: flex;
     flex-wrap: wrap;
@@ -854,4 +881,84 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
     grid-template-columns: 1fr;
     gap: 6px;
   }
+}
+
+/* --- Gästebuch-Unterseite (guestbook.html) --- */
+
+.guestbook-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(16px, 4vw, 40px) 20px;
+}
+
+.guestbook-page-logo img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
+.guestbook-page-back {
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.guestbook-page-back:hover {
+  color: var(--color-accent-hover);
+}
+
+.guestbook-page-main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px 120px;
+  text-align: center;
+}
+
+.guestbook-page-title {
+  font-family: 'Sora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: clamp(2rem, 1.8rem + 1vw, 2.6rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 40px;
+}
+
+.guestbook-page-figure {
+  margin: 0 0 32px;
+}
+
+.guestbook-page-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.guestbook-page-text {
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.guestbook-page-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  text-align: center;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.guestbook-page-footer a {
+  color: var(--color-accent);
 }
