@@ -100,13 +100,27 @@
 }
 
 .contact-title {
-    font-size: clamp(2rem, 1.8rem + 1vw, 2.4rem);
+    /* Styled to look like the site's other pill buttons
+       (.contact-submit / .guestbook-link) - same border, radius and
+       colors - even though it's just a heading, not an actual button. */
+    display: table;
+    font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem);
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     text-align: center;
-    color: #000;
-    margin-bottom: 32px;
+    color: var(--color-accent);
+    background: rgba(0, 0, 0, 0.72);
+    border: 2px solid var(--color-accent);
+    border-radius: 30px;
+    padding: 12px 32px;
+    /* Pushes just the content down within the section (.contact-bg
+       grows to match via its height:calc(100% + ...) formula, so the
+       photo simply extends further instead of being affected).
+       Large enough on mobile to also clear .guestbook's higher
+       z-index fade zone in the overlap area - otherwise the button
+       reads lighter there than on tablet/desktop. */
+    margin: clamp(140px, 20vw, 200px) auto 32px;
 }
 
 .contact-success {
