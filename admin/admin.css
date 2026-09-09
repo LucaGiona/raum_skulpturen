@@ -38,6 +38,19 @@ body.admin-body {
     border-radius: 6px;
 }
 
+.field-error {
+    display: block;
+    color: #c0392b;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.admin-forgot-link {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
 .admin-tabs {
     display: flex;
     gap: 0.5rem;

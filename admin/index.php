@@ -27,6 +27,7 @@ $errorMessage = $_GET['error'] ?? '';
     <header class="admin-header">
         <h1>Galerie verwalten</h1>
         <form method="post" action="/admin/logout.php">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($token) ?>">
             <button type="submit" class="admin-logout">Abmelden</button>
         </form>
     </header>
@@ -70,8 +71,8 @@ $errorMessage = $_GET['error'] ?? '';
 
             <div class="admin-field">
                 <label for="image">Bilddatei</label>
-                <small id="image-hint">JPG oder PNG, maximal 2&nbsp;MB. Empfohlen: 600–1600 Pixel an der längsten Seite.</small>
-                <input type="file" id="image" name="image" accept="image/jpeg,image/png" aria-describedby="image-hint" required>
+                <small id="image-hint">JPG, PNG oder WebP, maximal 2&nbsp;MB. Empfohlen: 600–1600 Pixel an der längsten Seite.</small>
+                <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp" aria-describedby="image-hint" required>
             </div>
 
             <button type="submit">Hochladen</button>

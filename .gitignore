@@ -12,3 +12,6 @@ mail-config.php
 
 # Admin-Zugangsdaten - niemals committen
 admin/config.php
+
+# Einrichtungscode fuer admin/setup.php - niemals committen
+admin/setup-code.php

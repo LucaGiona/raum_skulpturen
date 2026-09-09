@@ -3,6 +3,11 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/auth.php';
 
+if (!config_exists()) {
+    header('Location: /admin/setup.php');
+    exit;
+}
+
 $error = '';
 
 if (is_logged_in()) {
@@ -10,7 +15,11 @@ if (is_logged_in()) {
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$lockedSeconds = login_locked_seconds_remaining();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $lockedSeconds > 0) {
+    $error = 'Zu viele Fehlversuche. Bitte in ' . ceil($lockedSeconds / 60) . ' Minute(n) erneut versuchen.';
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $config = admin_config();
 
     $username = trim($_POST['username'] ?? '');
@@ -20,12 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $validPassword = password_verify($password, $config['admin_password_hash']);
 
     if ($validUsername && $validPassword) {
+        reset_login_failures();
         session_regenerate_id(true);
         $_SESSION['admin_logged_in'] = true;
         header('Location: /admin/index.php');
         exit;
     }
 
+    register_login_failure();
     $error = 'Benutzername oder Passwort ist falsch.';
 }
 ?>
@@ -56,6 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <button type="submit">Anmelden</button>
         </form>
+
+        <p class="admin-forgot-link"><a href="/admin/forgot-password.php">Passwort vergessen?</a></p>
     </main>
 </body>
 </html>
