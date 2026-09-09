@@ -17,13 +17,18 @@ function scrollToGalleryStart() {
     gallerySection.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function createImageItem(filename, path) {
+const GALLERY_LABELS = {
+    works: "Kunst am Bau",
+    sculptures: "Skulpturen",
+};
+
+function createImageItem(filename, path, label, index) {
     const item = document.createElement("div");
     item.className = "gallery-item";
 
     const img = document.createElement("img");
     img.src = path + filename;
-    img.alt = filename;
+    img.alt = `${label} – Werkansicht ${index + 1}`;
     img.loading = "lazy";
 
     item.appendChild(img);
@@ -33,10 +38,11 @@ function createImageItem(filename, path) {
 function renderGallery() {
     const gallery = galleries[activeGallery];
     const visibleImages = gallery.images.slice(0, shownCount);
+    const label = GALLERY_LABELS[activeGallery] || "Galerie";
 
     grid.replaceChildren();
-    visibleImages.forEach(filename => {
-        grid.appendChild(createImageItem(filename, gallery.path));
+    visibleImages.forEach((filename, index) => {
+        grid.appendChild(createImageItem(filename, gallery.path, label, index));
     });
 
     const isFullyExpanded = shownCount >= gallery.images.length;
