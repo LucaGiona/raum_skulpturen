@@ -1,8 +1,10 @@
 .gallery-section {
     position: relative;
+    z-index: 1;
     scroll-margin-top: 16px;
-    padding-top: 15px;
+    padding-top: clamp(100px, 20vw, 260px);
     padding-bottom: 60px;
+    background: linear-gradient(to bottom, transparent, var(--color-bg) clamp(100px, 20vw, 260px));
 }
 
 .gallery-title {
