@@ -248,7 +248,12 @@
 
 @media (max-width: 600px) {
     .contact {
-        margin: 0px 0 60px;
-        padding: 30px 20px;
+        /* Keep the negative top margin (matches .guestbook's fixed
+           360px min-height + its 45%-tall fade zone on this range) so
+           the overlap/cross-fade with .guestbook still works - this
+           used to reset margin-top to 0, wiping the overlap out and
+           leaving a black gap below 600px. */
+        margin: -180px 0 60px;
+        padding: 60px 20px 30px;
     }
 }
