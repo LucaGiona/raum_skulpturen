@@ -6,7 +6,7 @@
     padding: 140px 20px;
     --parallax-amplitude: 60px;
 
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 @media (min-width: 601px) {
@@ -96,7 +96,7 @@
 }
 
 .contact-title {
-    font-size: 1.8rem;
+    font-size: clamp(2rem, 1.8rem + 1vw, 2.4rem);
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -124,7 +124,7 @@
 }
 
 .contact-hint {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.75);
     text-align: right;
     margin-bottom: 12px;
@@ -163,7 +163,7 @@
 }
 
 .form-field label {
-    font-size: 0.85rem;
+    font-size: 1rem;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.85);
@@ -172,7 +172,7 @@
 .form-field input,
 .form-field textarea {
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 10px 12px;
     background: rgba(0, 0, 0, 0.72);
     border: 1px solid rgba(255, 255, 255, 0.28);
@@ -196,7 +196,7 @@
 }
 
 .field-error {
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: #e57368;
 }
 

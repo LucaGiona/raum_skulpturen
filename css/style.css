@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Manrope';
+  src: url('/assets/fonts/Manrope,Sora/Manrope/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('/assets/fonts/Manrope,Sora/Sora/Sora-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-bg: #000;
   --color-surface: #111;
@@ -27,6 +43,8 @@
 }
 
 body {
+  letter-spacing: 0.01em;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: 0;
   background: var(--color-bg);
   color: var(--color-text);
@@ -124,7 +142,7 @@ body {
 
 .control-btn {
   padding: 6px 14px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -214,7 +232,7 @@ body {
 }
 
 .intro {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     max-width: 700px;
     margin: 40px auto 200px;
     padding: 0 20px;
@@ -223,7 +241,7 @@ body {
 }
 
 .intro-title {
-    font-size: 1.8rem;
+    font-size: clamp(2rem, 1.8rem + 1vw, 2.4rem);
     font-weight: 600;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -231,8 +249,14 @@ body {
     margin-bottom: 12px;
 }
 
+@media (min-width: 601px) {
+    .intro-title {
+        margin-bottom: 32px;
+    }
+}
+
 .intro-text {
-    font-size: 0.95rem;
+    font-size: clamp(1.05rem, 1rem + 0.2vw, 1.125rem);
     font-weight: 400;
     letter-spacing: 0.03em;
     line-height: 1.7;
@@ -247,7 +271,7 @@ body {
     max-width: 1000px;
     margin: 80px auto;
     padding: 0 20px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .bio-portrait {
@@ -260,7 +284,7 @@ body {
 }
 
 .bio-name {
-    font-size: 1.8rem;
+    font-size: clamp(2rem, 1.8rem + 1vw, 2.4rem);
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -269,7 +293,7 @@ body {
 }
 
 .bio-text {
-    font-size: 1rem;
+    font-size: clamp(1.1rem, 1.05rem + 0.2vw, 1.2rem);
     font-weight: 400;
     line-height: 1.75;
     color: var(--color-text-muted);
@@ -322,11 +346,11 @@ body {
     padding: 28px 20px;
     padding-bottom: 60px;
     text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .references-title {
-    font-size: 1.8rem;
+    font-size: clamp(2rem, 1.8rem + 1vw, 2.4rem);
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -345,7 +369,7 @@ body {
 }
 
 .references-list li {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     letter-spacing: 0.02em;
     color: var(--color-text-muted);
     position: relative;
@@ -372,8 +396,8 @@ body {
     max-width: 1200px;
     margin: 0 auto 120px;
     padding: 140px 60px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.9rem;
+    font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.05rem;
     color: var(--color-footer-text);
     background:
         url('/assets/logos/logo01.png') center 65%/auto 45% no-repeat,
@@ -531,7 +555,7 @@ body {
     max-height: 80vh;
     background: var(--color-surface);
     border-radius: 6px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
@@ -560,7 +584,7 @@ body {
 }
 
 .modal-title {
-    font-size: 1.6rem;
+    font-size: clamp(1.8rem, 1.6rem + 1vw, 2.2rem);
     font-weight: 600;
     letter-spacing: 0.03em;
     text-transform: uppercase;
@@ -569,15 +593,49 @@ body {
 }
 
 .modal-lorem {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     line-height: 1.7;
     color: var(--color-text-muted);
     margin-bottom: 24px;
 }
 
 .modal-details p {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     line-height: 1.6;
     color: var(--color-text-muted);
     margin: 0 0 4px;
+}
+
+button, input, select, textarea {
+  letter-spacing: inherit;
+  font-family: inherit;
+}
+
+/* Headings and buttons share the display typeface across all sections. */
+body :is(h1, h2, h3, h4, h5, h6, button, input[type="button"], input[type="submit"], input[type="reset"]) {
+  font-family: 'Sora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body :is(h1, h2, h3, h4, h5, h6) {
+  letter-spacing: 0.06em;
+}
+
+body :is(button, input[type="button"], input[type="submit"], input[type="reset"]) {
+  letter-spacing: 0.04em;
+}
+
+.intro-services {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 24px;
+}
+
+@media (max-width: 600px) {
+  .intro-services {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
 }
