@@ -85,18 +85,6 @@ body {
   will-change: transform;
 }
 
-/* Tablet/Desktop: blurred, darkened copy of the same photo fills the
-   sides behind the full, uncropped image (see below). */
-.hero-bg-blur {
-  display: none;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: url('/assets/background-images/bodemuseum.jpg') center/cover no-repeat;
-  filter: blur(60px) brightness(0.5) saturate(1.15);
-  transform: scale(1.2);
-}
-
 @keyframes hero-zoom {
   0% {
     transform: scale(var(--hero-zoom-start));
@@ -123,25 +111,26 @@ body {
   }
 }
 
-/* Tablet/Desktop: the source photo (bodemuseum.jpg) is a tall portrait
-   shot. On a wide viewport, object-fit/background "cover" only ever
-   showed a thin horizontal sliver of it (usually just the stairs),
-   which read as a random crop. Instead we show the full, uncropped
-   photo centered ("contain"), with a blurred copy of the same image
-   filling the sides so it never looks like an accidental letterbox.
-   TODO: once a dedicated wide/landscape photo of the Bodemuseum shot
-   exists, swap it in here instead of the contain+blur treatment. */
-@media (min-width: 801px) {
-  .hero-bg-blur {
-    display: block;
-  }
-
+/* Tablet/Desktop: full-width cover crop again (the contain+blur
+   version framed the photo too narrow). The source photo is a tall
+   portrait shot, so this still only ever shows a thin horizontal
+   slice of it - a proper wide/landscape photo is needed to fix that
+   for real; until then this is the best compromise. */
+@media (min-width: 801px) and (max-width: 1199px) {
   .hero-bg::before {
     --hero-zoom-start: 1;
-    --hero-zoom-end: 1.06;
-    background-size: contain;
-    background-position: center center;
-    transform-origin: center;
+    --hero-zoom-end: 1.1;
+    background-position: center bottom;
+    transform-origin: center bottom;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-bg::before {
+    --hero-zoom-start: 1;
+    --hero-zoom-end: 1.12;
+    background-position: center bottom;
+    transform-origin: center bottom;
   }
 }
 
