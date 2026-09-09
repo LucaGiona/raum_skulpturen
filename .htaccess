@@ -1,0 +1,20 @@
+# Verzeichnis-Listing global deaktivieren.
+Options -Indexes
+
+# Zugriff auf versteckte Dateien/Ordner (z.B. .git, .env, .DS_Store) sperren,
+# falls sie versehentlich mit hochgeladen werden.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Zusaetzlicher Schutz fuer Dateien mit echten Zugangsdaten: auch falls PHP in
+# einem Verzeichnis mal nicht ausgefuehrt werden sollte, wird der Inhalt nie
+# als Klartext ausgeliefert.
+<FilesMatch "^(config|mail-config|setup-code)\.php$">
+    Require all denied
+</FilesMatch>
+
+# PHP-Version fuer dieses Verzeichnis (und Unterverzeichnisse) explizit setzen.
+# Falls STRATO fuer diesen Vertrag eine andere Zeile vorschreibt, siehe:
+# https://www.strato.de/faq/hosting/so-stellen-sie-ihre-php-version-manuell-um/
+# AddHandler application/x-httpd-php84 .php
