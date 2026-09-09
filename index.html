@@ -64,8 +64,8 @@
             </div>
         </header>
 
-        <section class="intro">
-            <h1 class="intro-title" data-i18n="introTitle">Gips mir</h1>
+        <section class="intro" aria-labelledby="intro-title">
+            <h1 class="intro-title" id="intro-title" data-i18n="introTitle">Gips mir</h1>
             <ul class="intro-text intro-services" role="list">
                 <li data-i18n="introSculpture">Bildhauerei</li>
                 <li data-i18n="introReliefs">Reliefs</li>
@@ -90,8 +90,8 @@
         </blockquote>
     </div>
 
-    <section class="gallery-section" id="gallery">
-        <h1 class="gallery-title" data-i18n="galleryTitle">Raum zum Leben</h1>
+    <section class="gallery-section" id="gallery" aria-labelledby="gallery-heading">
+        <h1 class="gallery-title" id="gallery-heading" data-i18n="galleryTitle">Raum zum Leben</h1>
 
         <div class="gallery-categories" role="group" aria-label="Galeriekategorie">
             <button class="gallery-category is-active" type="button" data-gallery="works" aria-pressed="true"
@@ -113,12 +113,12 @@
             </button>
         </div>
     </section>
-    <div class="section-divider"></div>
-    <section class="bio">
+    <div class="section-divider" aria-hidden="true"></div>
+    <section class="bio" aria-labelledby="bio-heading">
         <img class="bio-portrait" src="/assets/images/portrait01.jpg" loading="lazy" decoding="async"
             alt="Göran Thie">
         <div class="bio-content">
-            <h2 class="bio-name">Göran Thie</h2>
+            <h2 class="bio-name" id="bio-heading">Göran Thie</h2>
             <p class="bio-text" data-i18n="bioText1">Stilgrenzen sind für mich aufgehoben. Meine Arbeiten entstehen aus
                 dem Dialog zwischen Wahrnehmung, Gedanken und Material – frei, intuitiv und immer offen für das
                 Unerwartete. Ästhetik und Provokation begegnen sich dabei ebenso wie Harmonie und Irritation.</p>
@@ -132,9 +132,9 @@
                 Suche nach neuen Formen und neuen Möglichkeiten.</p>
         </div>
     </section>
-    <div class="section-divider"></div>
-    <section class="references">
-        <h2 class="references-title" data-i18n="referencesTitle">Referenzen</h2>
+    <div class="section-divider" aria-hidden="true"></div>
+    <section class="references" aria-labelledby="references-heading">
+        <h2 class="references-title" id="references-heading" data-i18n="referencesTitle">Referenzen</h2>
         <ul class="references-list">
             <li>Hotel Zoo Berlin</li>
             <li>Bostich Berlin</li>
@@ -148,10 +148,10 @@
             <li>Galerie Skulptur + Raum Berlin Prenzlauer Berg</li>
         </ul>
     </section>
-    <div class="section-divider"></div>
-    <section class="contact" id="contact">
+    <div class="section-divider" aria-hidden="true"></div>
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
         <div class="contact-bg" aria-hidden="true"></div>
-        <h2 class="contact-title" data-i18n="contactTitle">Kontakt</h2>
+        <h2 class="contact-title" id="contact-heading" data-i18n="contactTitle">Kontakt</h2>
         <p class="contact-hint" data-i18n="contactHint">* Pflichtfeld</p>
         <form class="contact-form" id="contact-form" method="post" action="/contact.php" novalidate>
             <p class="contact-form-message" id="contact-form-message" role="status" hidden></p>
@@ -200,9 +200,9 @@
             <p class="footer-name">Gøran Thie</p>
         </div>
         <div class="footer-contact">
-            <p><a href="tel:+491788452485">+49 178 8452485</a></p>
+            <p><a href="tel:+491788452485" aria-label="Anrufen: +49 178 8452485">+49 178 8452485</a></p>
             <p>Kopenhagener Strasse 5<br>10437 Berlin</p>
-            <p><a href="mailto:info@gipsmir.com">info@gipsmir.com</a></p>
+            <p><a href="mailto:info@gipsmir.com" aria-label="E-Mail senden an info@gipsmir.com">info@gipsmir.com</a></p>
         </div>
         <div class="footer-legal">
             <button type="button" id="impressum-link" class="footer-link" data-i18n="impressumLink">Impressum</button>
