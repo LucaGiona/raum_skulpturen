@@ -9,6 +9,7 @@ require_login();
 const ALLOWED_MIME_TYPES = [
     'image/jpeg' => 'jpg',
     'image/png' => 'png',
+    'image/webp' => 'webp',
 ];
 
 const MAX_FILE_SIZE_BYTES = 2 * 1024 * 1024; // 2 MB
@@ -95,7 +96,12 @@ if (!$resized) {
 try {
     add_image_to_gallery($category, $filename);
 } catch (Throwable $e) {
-    fail('Bild wurde gespeichert, aber Galerie-Daten konnten nicht aktualisiert werden: ' . $e->getMessage());
+    // Rollback: bereits gespeicherte Datei wieder entfernen, damit keine verwaisten
+    // Bilder auf dem Server liegen bleiben, die in keiner Galerie auftauchen.
+    if (is_file($targetPath)) {
+        @unlink($targetPath);
+    }
+    fail('Bild konnte nicht gespeichert werden, Galerie-Daten konnten nicht aktualisiert werden: ' . $e->getMessage());
 }
 
 header('Location: /admin/index.php?success=1');

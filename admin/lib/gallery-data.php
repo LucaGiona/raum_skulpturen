@@ -37,13 +37,13 @@ function save_galleries(array $galleries): void
         throw new RuntimeException('Galerie-Daten konnten nicht als JSON kodiert werden.');
     }
 
-    file_put_contents(GALLERY_JSON_PATH, $json . "\n");
+    file_put_contents(GALLERY_JSON_PATH, $json . "\n", LOCK_EX);
 
     $jsContent = "// Diese Datei wird automatisch aus js/data/images.json erzeugt.\n"
         . "// Bitte nicht von Hand bearbeiten - Aenderungen im admin/-Bereich vornehmen.\n"
         . "export const galleries = {$json};\n";
 
-    file_put_contents(GALLERY_JS_PATH, $jsContent);
+    file_put_contents(GALLERY_JS_PATH, $jsContent, LOCK_EX);
 }
 
 function add_image_to_gallery(string $category, string $filename): void
