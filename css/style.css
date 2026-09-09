@@ -196,6 +196,17 @@ body {
   overflow: hidden;
 }
 
+.stucco-feature::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* Even dark wash across the whole image so the centered quote
+     stays legible everywhere, not just against the bottom fade. */
+  background: rgba(0, 0, 0, 0.42);
+}
+
 .stucco-feature::after {
   content: "";
   position: absolute;
@@ -205,6 +216,41 @@ body {
   background: linear-gradient(to bottom,
     transparent 70%,
     var(--color-bg) 100%);
+}
+
+.stucco-quote {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 2;
+  margin: 0;
+  padding: 0 24px;
+  text-align: center;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.stucco-quote p {
+  font-family: 'Sora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.4rem);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+}
+
+.stucco-quote cite {
+  display: block;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
 }
 
 .stucco-feature img {
