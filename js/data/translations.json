@@ -34,7 +34,11 @@
         "contactPhone": "Telefon",
         "contactMessage": "Nachricht",
         "contactSubmit": "Absenden",
-        "contactAlert": "Danke, {firstname}! Deine Nachricht wurde verschickt."
+        "contactAlert": "Danke, {firstname}! Deine Nachricht wurde verschickt.",
+        "guestbookLink": "Zum Gästebuch",
+        "guestbookPageTitle": "Gästebuch",
+        "guestbookBack": "← Zurück zur Startseite",
+        "guestbookText": "Hier entsteht in Kürze unser digitales Gästebuch. Bis dahin freuen wir uns über Ihren Besuch im Atelier."
     },
     "en": {
         "introTitle": "Cast me",
@@ -71,6 +75,10 @@
         "contactPhone": "Phone",
         "contactMessage": "Message",
         "contactSubmit": "Send",
-        "contactAlert": "Thank you, {firstname}! Your message has been sent."
+        "contactAlert": "Thank you, {firstname}! Your message has been sent.",
+        "guestbookLink": "To the Guestbook",
+        "guestbookPageTitle": "Guestbook",
+        "guestbookBack": "← Back to homepage",
+        "guestbookText": "Our digital guestbook is coming soon. Until then, we'd love to welcome you at the atelier."
     }
 }
