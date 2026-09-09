@@ -15,3 +15,6 @@ admin/config.php
 
 # Einrichtungscode fuer admin/setup.php - niemals committen
 admin/setup-code.php
+
+# Claude-Arbeitsausgaben - nie committen
+Claude outputs/
