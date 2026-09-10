@@ -179,14 +179,12 @@ body {
 }
 
 .stucco-feature {
-  --stucco-overlap: clamp(100px, 20vw, 260px);
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: 1200px;
-  aspect-ratio: 4 / 3;
-  margin: calc(-1 * var(--stucco-overlap)) auto;
-  margin-top: calc(-1 * clamp(40px, 7vw, 100px));
+  height: clamp(220px, 40vw, 480px);
+  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -196,8 +194,6 @@ body {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  /* Even dark wash across the whole image so the centered quote
-     stays legible everywhere, not just against the bottom fade. */
   background: rgba(0, 0, 0, 0.42);
 }
 
@@ -208,35 +204,34 @@ body {
   z-index: 1;
   pointer-events: none;
   background: linear-gradient(to bottom,
+    var(--color-bg) 0%,
+    transparent 20%,
     transparent 70%,
     var(--color-bg) 100%);
 }
 
-.stucco-quote {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  z-index: 2;
-  margin: 0;
-  padding: 0 24px;
-  text-align: center;
-  pointer-events: none;
-  transform: translateY(-50%);
+.quote-section {
+  background: var(--color-bg);
+  padding: clamp(42px, 6vw, 72px) 24px;
 }
 
-.stucco-quote p {
+.kafka-quote {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.kafka-quote p {
   font-family: 'Sora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.4rem);
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: #fff;
+  color: var(--color-text);
   margin: 0 0 10px;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
 }
 
-.stucco-quote cite {
+.kafka-quote cite {
   display: block;
   font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -244,7 +239,6 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-accent);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
 }
 
 .stucco-feature img {
@@ -383,21 +377,6 @@ body {
     color: var(--color-text);
 }
 
-.intro-title {
-    font-size: clamp(2rem, 1.8rem + 1vw, 2.4rem);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 12px;
-}
-
-@media (min-width: 601px) {
-    .intro-title {
-        margin-bottom: 32px;
-    }
-}
-
 .intro-text {
     font-size: clamp(1.05rem, 1rem + 0.2vw, 1.125rem);
     font-weight: 400;
@@ -518,8 +497,8 @@ body {
 .references {
     max-width: 900px;
     margin: 0 auto;
-    padding: 28px 20px;
-    padding-bottom: 60px;
+    padding: 105px 20px;
+    padding-bottom: 225px;
     text-align: center;
     font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
