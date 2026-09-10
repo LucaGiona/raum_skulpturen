@@ -336,6 +336,16 @@ body {
   z-index: 50;
 }
 
+.audio-toggle.icon-btn {
+  width: clamp(48px, 4.5vw, 64px);
+  height: clamp(48px, 4.5vw, 64px);
+}
+
+.audio-toggle.icon-btn svg {
+  width: clamp(24px, 2.25vw, 32px);
+  height: clamp(24px, 2.25vw, 32px);
+}
+
  .logo-test {
   width: 100%;
   max-width: 1200px;

@@ -1,15 +1,15 @@
 const toggleBtn = document.getElementById("audio-toggle");
-const iconOn = toggleBtn.querySelector('[data-icon="on"]');
-const iconOff = toggleBtn.querySelector('[data-icon="off"]');
+const pauseIcon = toggleBtn.querySelector('[data-icon="pause"]');
+const playIcon = toggleBtn.querySelector('[data-icon="play"]');
 const player = document.getElementById("site-audio");
 
 let isOn = false;
 
 function applyState() {
-    iconOn.hidden = !isOn;
-    iconOff.hidden = isOn;
+    pauseIcon.toggleAttribute("hidden", !isOn);
+    playIcon.toggleAttribute("hidden", isOn);
     toggleBtn.setAttribute("aria-pressed", String(isOn));
-    toggleBtn.setAttribute("aria-label", isOn ? "Ton ausschalten" : "Ton einschalten");
+    toggleBtn.setAttribute("aria-label", isOn ? "Musik pausieren" : "Musik abspielen");
 }
 
 function startPlayback() {
@@ -34,19 +34,6 @@ toggleBtn.addEventListener("click", () => {
             applyState();
         });
     }
-});
-
-// Browsers block autoplay with sound. Try immediately; if blocked,
-// start on the very first user interaction with the page instead.
-const retryEvents = ["pointerdown", "keydown", "touchstart"];
-
-function retryOnFirstInteraction() {
-    startPlayback().catch(() => {});
-    retryEvents.forEach(type => document.removeEventListener(type, retryOnFirstInteraction));
-}
-
-startPlayback().catch(() => {
-    retryEvents.forEach(type => document.addEventListener(type, retryOnFirstInteraction, { once: true }));
 });
 
 applyState();
