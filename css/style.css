@@ -897,6 +897,20 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
   }
 }
 
+@media (min-width: 720px) {
+  .hero .intro {
+    max-width: 1120px;
+    padding-inline: clamp(24px, 4vw, 48px);
+  }
+
+  .hero .intro-services {
+    font-size: clamp(1.25rem, 0.5rem + 1.667vw, 1.75rem);
+    line-height: 1.55;
+    gap: clamp(14px, 2vw, 24px) clamp(20px, 3vw, 36px);
+    overflow-wrap: anywhere;
+  }
+}
+
 /* --- Gästebuch-Unterseite (guestbook.html) --- */
 
 .guestbook-page-header {
