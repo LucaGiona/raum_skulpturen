@@ -72,6 +72,12 @@
     overflow: hidden;
     border-radius: 8px;
     background: var(--color-surface);
+    cursor: pointer;
+}
+
+.gallery-item:focus-visible {
+    outline: 2px solid var(--color-text);
+    outline-offset: 3px;
 }
 
 .gallery-item img {
@@ -136,5 +142,146 @@
 
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 66vw;
+    max-height: 72vh;
+}
+
+.lightbox-image {
+    position: relative;
+    max-width: 66vw;
+    max-height: 72vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close,
+.lightbox-nav {
+    position: absolute;
+    z-index: 2;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible,
+.lightbox-nav:hover,
+.lightbox-nav:focus-visible {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.lightbox-close:focus-visible,
+.lightbox-nav:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.lightbox-close {
+    top: -56px;
+    right: -83px;
+    width: 48px;
+    height: 48px;
+    font-size: 2.1rem;
+    line-height: 1;
+}
+
+.lightbox-nav {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 66px;
+    height: 66px;
+    font-size: 2.4rem;
+    line-height: 1;
+}
+
+.lightbox-prev {
+    left: -92px;
+}
+
+.lightbox-next {
+    right: -92px;
+}
+
+@media (max-width: 900px) {
+    .lightbox-stage,
+    .lightbox-image {
+        max-width: 84vw;
+        max-height: 70vh;
+    }
+
+    .lightbox-close {
+        top: -50px;
+        right: -51px;
+    }
+
+    .lightbox-prev {
+        left: -60px;
+    }
+
+    .lightbox-next {
+        right: -60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .lightbox-stage,
+    .lightbox-image {
+        max-width: 88vw;
+        max-height: 64vh;
+    }
+
+    .lightbox-close {
+        top: -46px;
+        right: 0;
+        width: 42px;
+        height: 42px;
+        font-size: 1.8rem;
+    }
+
+    .lightbox-nav {
+        width: 46px;
+        height: 46px;
+        font-size: 1.7rem;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    .lightbox-prev {
+        left: 6px;
+    }
+
+    .lightbox-next {
+        right: 6px;
     }
 }

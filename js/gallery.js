@@ -1,4 +1,5 @@
 import { galleries } from "./data/images.js";
+import { openLightbox } from "./lightbox.js";
 
 const BATCH_SIZE = 6;
 let activeGallery = "works";
@@ -22,9 +23,12 @@ const GALLERY_LABELS = {
     sculptures: "Skulpturen",
 };
 
-function createImageItem(filename, path, label, index) {
+function createImageItem(filename, path, label, index, allImages) {
     const item = document.createElement("div");
     item.className = "gallery-item";
+    item.setAttribute("role", "button");
+    item.tabIndex = 0;
+    item.setAttribute("aria-label", `${label} – Werkansicht ${index + 1} vergrößern`);
 
     const img = document.createElement("img");
     img.src = path + filename;
@@ -32,6 +36,24 @@ function createImageItem(filename, path, label, index) {
     img.loading = "lazy";
 
     item.appendChild(img);
+
+    function openImage() {
+        const images = allImages.map((imageFilename, imageIndex) => ({
+            path,
+            filename: imageFilename,
+            alt: `${label} – Werkansicht ${imageIndex + 1}`,
+        }));
+        openLightbox(images, index);
+    }
+
+    item.addEventListener("click", openImage);
+    item.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openImage();
+        }
+    });
+
     return item;
 }
 
@@ -42,7 +64,7 @@ function renderGallery() {
 
     grid.replaceChildren();
     visibleImages.forEach((filename, index) => {
-        grid.appendChild(createImageItem(filename, gallery.path, label, index));
+        grid.appendChild(createImageItem(filename, gallery.path, label, index, gallery.images));
     });
 
     const isFullyExpanded = shownCount >= gallery.images.length;

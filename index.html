@@ -169,6 +169,17 @@
             </button>
         </div>
     </section>
+
+    <div class="lightbox" id="lightbox" hidden>
+        <div class="lightbox-backdrop" data-lightbox-close></div>
+        <div class="lightbox-stage">
+            <button class="lightbox-close" type="button" data-lightbox-close aria-label="Schließen">&times;</button>
+            <button class="lightbox-nav lightbox-prev" type="button" aria-label="Vorheriges Bild">&#8249;</button>
+            <img class="lightbox-image" id="lightbox-image" src="" alt="">
+            <button class="lightbox-nav lightbox-next" type="button" aria-label="Nächstes Bild">&#8250;</button>
+        </div>
+    </div>
+
     <div class="section-divider" aria-hidden="true"></div>
     <section class="bio" aria-labelledby="bio-heading">
         <img class="bio-portrait" src="/assets/images/portrait01.jpg" loading="lazy" decoding="async"
