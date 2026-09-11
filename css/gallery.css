@@ -73,6 +73,15 @@
     border-radius: 8px;
     background: var(--color-surface);
     cursor: pointer;
+    border: 2px solid transparent;
+    box-shadow: 0 0 0 0 transparent;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-item:hover,
+.gallery-item:focus-visible {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 45%, transparent);
 }
 
 .gallery-item:focus-visible {
@@ -88,7 +97,7 @@
     transition: transform 0.3s ease;
 }
 
-.gallery-item img:hover {
+.gallery-item:hover img {
     transform: scale(1.05);
 }
 

@@ -2,9 +2,8 @@
     "works": {
         "path": "/assets/images/",
         "images": [
-            "finger-01-filter-01-warm.jpg",
-            "finger-01-filter-02-cool.jpg",
             "finger-01-filter-03-mono.jpg",
+            "finger-01-filter-02-cool.jpg",
             "finger-01.jpeg",
             "finger-01-filter-04-sepia.jpg",
             "finger-01-filter-05-vivid.jpg",
@@ -57,6 +56,37 @@
             "skizze-01-filter-02-cool.jpg",
             "skizze-01-filter-03-mono.jpg",
             "skizze-01-filter-04-sepia.jpg"
+        ]
+    },
+    "guestbook": {
+        "path": "/assets/guestbook/",
+        "images": [
+            "guestbook01.jpeg",
+            "guestbook02.jpeg",
+            "guestbook03.jpeg",
+            "guestbook04.jpeg",
+            "guestbook05.jpeg",
+            "guestbook06.jpeg",
+            "guestbook07.jpeg",
+            "guestbook08.jpeg",
+            "guestbook09.jpeg",
+            "guestbook10.jpeg",
+            "guestbook11.jpeg",
+            "guestbook12.jpeg",
+            "guestbook13.jpeg",
+            "guestbook14.jpeg",
+            "guestbook15.jpeg",
+            "guestbook16.jpeg",
+            "guestbook17.jpeg",
+            "guestbook18.jpeg",
+            "guestbook19.jpeg",
+            "guestbook20.jpeg",
+            "guestbook21.jpeg",
+            "guestbook22.jpeg",
+            "guestbook23.jpeg",
+            "guestbook24.jpeg",
+            "guestbook25.jpeg",
+            "guestbook26.jpeg"
         ]
     }
 }

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
     <script src="/js/i18n.js" type="module"></script>
+    <script src="/js/guestbook-carousel.js" type="module"></script>
 </head>
 
 <body>
@@ -29,12 +30,20 @@
 
     <main class="guestbook-page-main">
         <h1 class="guestbook-page-title" data-i18n="guestbookPageTitle">Gästebvch</h1>
-        <figure class="guestbook-page-figure">
-            <img src="/assets/images/unterschrift_gast_01.jpeg" alt="Eintrag im Gästebuch des Ateliers"
-                loading="lazy">
-        </figure>
         <p class="guestbook-page-text" data-i18n="guestbookText">
-            Hier entsteht in Kürze unser digitales Gästebuch. Bis dahin freuen wir uns über Ihren Besuch im Atelier.
+            Ein Blick in unser Gästebuch – handgeschriebene Grüße und Eindrücke aus dem Atelier.
+        </p>
+
+        <div class="guestbook-carousel" id="guestbook-carousel">
+            <div class="guestbook-carousel-viewport" id="guestbook-carousel-viewport">
+                <div class="guestbook-carousel-track" id="guestbook-carousel-track"></div>
+            </div>
+            <button class="guestbook-carousel-nav guestbook-carousel-prev" type="button" aria-label="Vorheriger Eintrag">&#8249;</button>
+            <button class="guestbook-carousel-nav guestbook-carousel-next" type="button" aria-label="Nächster Eintrag">&#8250;</button>
+        </div>
+
+        <p class="guestbook-carousel-count" role="status" aria-atomic="true">
+            <span id="guestbook-carousel-index">1</span> / <span id="guestbook-carousel-total">1</span>
         </p>
     </main>
 
