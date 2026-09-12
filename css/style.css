@@ -52,8 +52,8 @@
   --color-border: #2a2929;
   --color-footer-text: #555;
   --color-footer-text-strong: #111;
-  --color-footer-radial-inner: #ffffff;
-  --color-footer-radial-outer: #ececec;
+  --color-footer-radial-inner: #000000;
+  --color-footer-radial-outer: #ffffff;
 }
 
 body {
