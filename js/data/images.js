@@ -87,8 +87,7 @@ export const galleries = {
             "guestbook22.jpeg",
             "guestbook23.jpeg",
             "guestbook24.jpeg",
-            "guestbook25.jpeg",
-            "guestbook26.jpeg"
+            "guestbook25.jpeg"
         ]
     }
 };

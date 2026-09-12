@@ -671,7 +671,7 @@ body {
         radial-gradient(circle at center 58%, var(--color-footer-radial-inner) 0%, var(--color-footer-radial-outer) 25%);
     background-position: center 65%, center center;
     background-size: auto 52%, 100% 100%;
-    animation: footer-radial-pulse 14s ease-in-out infinite;
+    animation: footer-radial-pulse 7s ease-in-out infinite;
     border-radius: 8px;
 }
 
