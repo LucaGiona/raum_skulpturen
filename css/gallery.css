@@ -149,6 +149,15 @@
         /* Clears the fixed sound-/lang-/theme-buttons (top:16px,
            up to ~64px tall) instead of sticking underneath them. */
         top: 76px;
+        max-width: calc(100vw - 32px);
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 6px 8px;
+    }
+
+    .gallery-category {
+        padding: 7px 14px;
+        font-size: 0.85rem;
     }
 
     .gallery-grid {
