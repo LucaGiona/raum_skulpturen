@@ -796,12 +796,21 @@ body {
 }
 
 .site-footer a {
-    color: var(--color-footer-text);
+    color: var(--color-accent);
     text-decoration: none;
 }
 
 .site-footer a:hover {
+    color: var(--color-accent-hover);
     text-decoration: underline;
+}
+
+.footer-contact-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 12px;
+    vertical-align: -2px;
 }
 
 .footer-company {
@@ -887,13 +896,22 @@ body {
         flex-direction: column;
         justify-content: space-between;
         text-align: center;
-        min-height: 520px;
+        min-height: 580px;
         padding-top: 40px;
         padding-bottom: 40px;
+        /* Fixed px offset (not %) for the logo layer, so it stays put
+           regardless of how tall the footer becomes - a percentage
+           here would shift the logo every time .footer-legal's
+           margin-top below changes the box height. */
+      
     }
 
     .footer-contact {
         margin-bottom: 400px;
+    }
+
+    .footer-legal {
+        margin-top: 140px;
     }
 }
 
