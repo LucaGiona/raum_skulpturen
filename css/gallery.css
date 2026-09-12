@@ -206,10 +206,7 @@
 }
 
 .lightbox-close:hover,
-.lightbox-close:focus-visible {
-    background: rgba(255, 255, 255, 0.25);
-}
-
+.lightbox-close:focus-visible,
 .lightbox-nav:hover,
 .lightbox-nav:focus-visible {
     background: var(--color-accent);
