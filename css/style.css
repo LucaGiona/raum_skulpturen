@@ -805,10 +805,11 @@ body {
 }
 
 .footer-company {
+    font-size: 1.3rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--color-footer-text-strong);
+    color: var(--color-accent);
 }
 
 .footer-legal {
