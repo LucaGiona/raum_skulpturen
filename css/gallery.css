@@ -2,7 +2,7 @@
     position: relative;
     z-index: 1;
     scroll-margin-top: 16px;
-    padding-top: clamp(84px, 10.5vw, 140px);
+    padding-top: clamp(40px, 5vw, 70px);
     padding-bottom: 60px;
     background: linear-gradient(to bottom, transparent, var(--color-bg) clamp(100px, 20vw, 260px));
 }
@@ -23,7 +23,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin: 0 auto 24px;
+    margin: 0 auto clamp(56px, 6vw, 84px);
     padding: 8px 10px;
     width: fit-content;
     border: 1px solid var(--color-border);
