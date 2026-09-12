@@ -451,6 +451,10 @@ body {
     font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+@media (min-width: 721px) and (max-width: 1100px) {
+    .bio { padding-inline: 48px; }
+}
+
 .bio-portrait {
     width: 280px;
     flex: 0 0 280px;
@@ -541,11 +545,26 @@ body {
         flex-direction: column;
         text-align: center;
         gap: 24px;
+        padding-inline: 32px;
+    }
+
+    .bio-content {
+        display: contents;
+    }
+
+    .bio-name {
+        order: -2;
+        margin: 0;
     }
 
     .bio-portrait {
+        order: -1;
         width: 200px;
         flex-basis: auto;
+    }
+
+    .bio-text {
+        margin: 0;
     }
 }
 
@@ -1230,4 +1249,29 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
 .legal-page a[href^="mailto:"],
 .legal-page a[href^="tel:"] {
   text-decoration: none;
+}
+
+.impressum-contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 240px);
+  align-items: start;
+  gap: 32px;
+}
+.impressum-contact-layout p:first-child { margin-top: 0; }
+.impressum-artwork {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+@media (max-width: 600px) {
+  .impressum-contact-layout {
+    grid-template-columns: minmax(0, 240px) 100px;
+    gap: 16px;
+    padding-right: 16px;
+  }
+  .impressum-artwork { max-width: 100px; }
+}
+@media (max-width: 359px) {
+  .impressum-contact-layout { grid-template-columns: minmax(0, 1fr); }
 }

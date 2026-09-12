@@ -4,6 +4,7 @@ export const galleries = {
     "works": {
         "path": "/assets/images/",
         "images": [
+            "hand_skelett.jpeg",
             "finger-01-filter-03-mono.jpg",
             "finger-01-filter-02-cool.jpg",
             "finger-01.jpeg",
