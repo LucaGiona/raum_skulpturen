@@ -14,6 +14,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Bonheur Royale';
+  src: url('/assets/fonts/Manrope,Sora/Bonheur_Royale/BonheurRoyale-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -229,11 +237,11 @@ body {
 }
 
 .kafka-quote p {
-  font-family: 'Sora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.4rem);
-  line-height: 1.5;
-  letter-spacing: 0.02em;
+  font-family: 'Bonheur Royale', cursive;
+  font-weight: 400;
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: normal;
   color: var(--color-text);
   margin: 0 0 10px;
 }
@@ -242,7 +250,8 @@ body {
   display: block;
   font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
-  font-size: 0.8rem;
+  font-size: clamp(1rem, 0.85rem + 0.75vw, 1.4rem);
+  line-height: 1.4;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-accent);
