@@ -571,8 +571,7 @@ body {
 .references {
     max-width: 900px;
     margin: 0 auto;
-    padding: 105px 20px;
-    padding-bottom: 225px;
+    padding: clamp(50px, 10vw, 105px) 20px clamp(70px, 20vw, 225px);
     text-align: center;
     font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
