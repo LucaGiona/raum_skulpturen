@@ -19,6 +19,10 @@
         padding-bottom: 220px;
         --parallax-amplitude: 140px;
     }
+
+    .contact-title {
+        transform: translateY(-150px);
+    }
 }
 
 @media (min-width: 1200px) {
@@ -100,27 +104,25 @@
 }
 
 .contact-title {
-    /* Styled to look like the site's other pill buttons
-       (.contact-submit / .guestbook-link) - same border, radius and
-       colors - even though it's just a heading, not an actual button. */
-    display: table;
-    font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem);
+    /* Plain heading, styled like the other section titles
+       (.references-title) instead of the pill-button look. */
+    font-size: clamp(2rem, 1.8rem + 1vw, 2.4rem);
     font-weight: 600;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     text-align: center;
     color: var(--color-accent);
-    background: rgba(0, 0, 0, 0.72);
-    border: 2px solid var(--color-accent);
-    border-radius: 30px;
-    padding: 12px 32px;
-    /* Pushes just the content down within the section (.contact-bg
+    /* Pushes the content area down within the section (.contact-bg
        grows to match via its height:calc(100% + ...) formula, so the
        photo simply extends further instead of being affected).
        Large enough on mobile to also clear .guestbook's higher
-       z-index fade zone in the overlap area - otherwise the button
+       z-index fade zone in the overlap area - otherwise the title
        reads lighter there than on tablet/desktop. */
     margin: clamp(140px, 20vw, 200px) auto 32px;
+    /* Moves the title higher within that reserved space without
+       touching the margin above (which would shrink .contact-bg's
+       height along with it). */
+    transform: translateY(-60px);
 }
 
 .contact-success {
