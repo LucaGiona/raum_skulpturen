@@ -146,7 +146,9 @@
 
 @media (max-width: 600px) {
     .gallery-categories {
-        top: 8px;
+        /* Clears the fixed sound-/lang-/theme-buttons (top:16px,
+           up to ~64px tall) instead of sticking underneath them. */
+        top: 76px;
     }
 
     .gallery-grid {
