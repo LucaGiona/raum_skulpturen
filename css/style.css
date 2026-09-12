@@ -615,6 +615,32 @@ body {
     background: var(--color-border);
 }
 
+@media (max-width: 740px) {
+    .references-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+
+    .references-list li::after {
+        display: none;
+    }
+
+    .references-item--wide {
+        grid-column: 1 / -1;
+    }
+
+    .references-list li:nth-child(even):not(.references-item--wide) {
+        justify-self: end;
+        text-align: right;
+    }
+
+    .references-list li:nth-child(odd):not(.references-item--wide) {
+        justify-self: start;
+        text-align: left;
+    }
+}
+
 .guestbook {
   position: relative;
   /* Higher than .contact's z-index (0): in their overlap zone,
@@ -1230,6 +1256,9 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
 
 .site-footer .footer-link {
   color: var(--color-accent);
+}
+.guestbook-page-footer .legal-links a {
+  text-decoration: none;
 }
 .site-footer .footer-link:hover,
 .site-footer .footer-link:focus-visible,
