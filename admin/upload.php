@@ -104,7 +104,7 @@ try {
     fail('Bild konnte nicht gespeichert werden, Galerie-Daten konnten nicht aktualisiert werden: ' . $e->getMessage());
 }
 
-header('Location: /admin/index.php?success=1');
+header('Location: /admin/index.php?success=1&category=' . urlencode($category));
 exit;
 
 function resize_and_save_image(string $sourcePath, string $targetPath, string $mimeType, int $maxWidth): bool

@@ -45,5 +45,5 @@ if (is_file($filePath)) {
 
 remove_image_from_gallery($category, $safeFilename);
 
-header('Location: /admin/index.php?deleted=1');
+header('Location: /admin/index.php?deleted=1&category=' . urlencode($category));
 exit;

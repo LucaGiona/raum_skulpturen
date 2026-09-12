@@ -42,7 +42,8 @@ Danach ist die Seite unter `http://localhost:8000` erreichbar. Für den Admin-Be
 
 ## Struktur
 
-* `index.html`, `guestbook.html` – Seiten
+* `index.html` – Startseite
+* `html/` – weitere Seiten (Gästebuch, Impressum, Datenschutz)
 * `css/` – Stylesheets
 * `js/` – Frontend-Logik, `js/data/` – Übersetzungen & Galerie-Daten (JSON, automatisch generiert)
 * `admin/` – PHP-Verwaltungsbereich für die Galerien

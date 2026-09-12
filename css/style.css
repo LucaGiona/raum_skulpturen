@@ -1019,7 +1019,7 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
   }
 }
 
-/* --- Gästebuch-Unterseite (guestbook.html) --- */
+/* --- Gästebuch-Unterseite (html/guestbook.html) --- */
 
 .guestbook-page-header {
   position: sticky;
