@@ -10,18 +10,23 @@ function applyTheme(theme) {
     const isDark = theme === "dark";
     sunIcon.hidden = !isDark;
     moonIcon.hidden = isDark;
-    toggleBtn.setAttribute("aria-label", isDark ? "Helles Farbschema aktivieren" : "Dunkles Farbschema aktivieren");
-    localStorage.setItem(STORAGE_KEY, theme);
+    const english = document.documentElement.lang === "en";
+    toggleBtn.setAttribute("aria-label", english
+        ? (isDark ? "Activate light theme" : "Activate dark theme")
+        : (isDark ? "Helles Farbschema aktivieren" : "Dunkles Farbschema aktivieren"));
 }
 
 function init() {
-    const saved = localStorage.getItem(STORAGE_KEY) || DEFAULT_THEME;
+    let saved = DEFAULT_THEME;
+    try { saved = localStorage.getItem(STORAGE_KEY) || saved; } catch { /* Ohne Browser-Speicher nutzbar. */ }
     applyTheme(saved);
 
     toggleBtn.addEventListener("click", () => {
         const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
         applyTheme(next);
+        try { localStorage.setItem(STORAGE_KEY, next); } catch { /* Speicherung optional. */ }
     });
 }
 
+document.addEventListener("site-language-change", () => applyTheme(document.documentElement.dataset.theme || DEFAULT_THEME));
 init();

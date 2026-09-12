@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Gästebuch – Skulptur + Raum</title>
-    <meta name="description"
-        content="Gästebuch von Skulptur + Raum – Gøran Thie, Bildhauerei und Kunst am Bau in Berlin.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.sculptur-raum.de/guestbook.html">
-
+    <title data-i18n="legalText14">Impressum – Skvlptvr + Ravm</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
     <script src="/js/i18n.js" type="module"></script>
     <script src="/js/theme.js" type="module"></script>
     <script src="/js/audio.js" type="module"></script>
-    <script src="/js/guestbook-carousel.js" type="module"></script>
 </head>
-
-<body>
+<body class="legal-page">
     <button type="button" id="audio-toggle" class="control-btn icon-btn audio-toggle" aria-pressed="false"
         aria-label="Musik abspielen">
         <svg data-icon="pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden>
@@ -50,37 +40,19 @@
         </button>
     </div>
 
+
     <header class="guestbook-page-header">
-        <a class="guestbook-page-logo" href="/index.html" aria-label="Zur Startseite">
-            <img src="/assets/logos/S+R-Logo_1.png" width="1417" height="710" alt="Skulptur und Raum">
-        </a>
-        <div class="guestbook-page-header-right">
-            <a class="guestbook-page-back" href="/index.html#guestbook" data-i18n="guestbookBack">&larr; Zvrück</a>
-        </div>
+        <a class="guestbook-page-logo" href="/index.html" aria-label="Zur Startseite"><img src="/assets/logos/S+R-Logo_1.png" width="1417" height="710" alt="Skulptur und Raum"></a>
+        <a class="guestbook-page-back" href="/index.html" data-i18n="legalText1">← Zurück zur Startseite</a>
     </header>
-
-    <main class="guestbook-page-main">
-        <h1 class="guestbook-page-title" data-i18n="guestbookPageTitle">Gästebvch</h1>
-        <p class="guestbook-page-text" data-i18n="guestbookText">
-            Ein Blick in unser Gästebuch – handgeschriebene Grüße und Eindrücke aus dem Atelier.
-        </p>
-
-        <div class="guestbook-carousel" id="guestbook-carousel">
-            <div class="guestbook-carousel-viewport" id="guestbook-carousel-viewport">
-                <div class="guestbook-carousel-track" id="guestbook-carousel-track"></div>
-            </div>
-            <button class="guestbook-carousel-nav guestbook-carousel-prev" type="button" aria-label="Vorheriger Eintrag">&#8249;</button>
-            <button class="guestbook-carousel-nav guestbook-carousel-next" type="button" aria-label="Nächster Eintrag">&#8250;</button>
-        </div>
-
-        <p class="guestbook-carousel-count" role="status" aria-atomic="true">
-            <span id="guestbook-carousel-index">1</span> / <span id="guestbook-carousel-total">1</span>
-        </p>
+    <main class="legal-main">
+        <h1 data-i18n="legalText2">Impressum</h1>
+        <section><h2 data-i18n="legalText4">Angaben gemäß § 5 DDG</h2><p>Gøran Thie · Skvlptvr + Ravm<br>Kopenhagener Strasse 5<br>10437 Berlin</p>
+        <p><span data-i18n="legalText6">Telefon:</span> <a href="tel:+491788452485">+49 178 8452485</a><br><span data-i18n="legalText7">E-Mail:</span> <a href="mailto:info@gipsmir.com">info@gipsmir.com</a></p></section>
+        <section><h2 data-i18n="legalText5">Steuernummer</h2><p>31/557/62146</p></section>
     </main>
-
     <footer class="guestbook-page-footer">
-        <nav class="legal-links" aria-label="Rechtliche Informationen"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
+        <nav class="legal-links" aria-label="Rechtliche Informationen"><a href="/datenschutz.html" data-i18n="legalText3">Datenschutz</a></nav>
     </footer>
 </body>
-
 </html>

@@ -1184,3 +1184,50 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
 .guestbook-page-footer a {
   color: var(--color-accent);
 }
+
+/* Legal pages share the existing display typeface and heading accent. */
+.legal-main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.legal-main h1, .legal-main h2 {
+  color: var(--color-accent);
+  line-height: 1.35;
+  font-weight: 400;
+}
+.legal-main h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
+.legal-main h2 { font-size: clamp(1.2rem, 4vw, 1.5rem); margin-top: 2rem; }
+.legal-main a, .contact-privacy a { color: var(--color-accent); text-underline-offset: 3px; }
+.legal-main a:hover, .contact-privacy a:hover { color: var(--color-accent-hover); }
+.legal-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 24px; margin: 16px 0; }
+.contact-privacy { font-size: 0.9rem; line-height: 1.6; }
+@media (max-width: 600px) {
+  .legal-page .guestbook-page-header { flex-wrap: wrap; gap: 16px; }
+  .legal-main { padding: 24px 20px 48px; }
+}
+
+.site-footer .footer-link {
+  color: var(--color-accent);
+}
+.site-footer .footer-link:hover,
+.site-footer .footer-link:focus-visible,
+.guestbook-page-footer .legal-links a:hover,
+.guestbook-page-footer .legal-links a:focus-visible {
+  color: var(--color-footer-text-strong);
+}
+:root[data-theme="light"] .site-footer .footer-link:hover,
+:root[data-theme="light"] .site-footer .footer-link:focus-visible,
+:root[data-theme="light"] .guestbook-page-footer .legal-links a:hover,
+:root[data-theme="light"] .guestbook-page-footer .legal-links a:focus-visible {
+  color: #000;
+}
+
+.legal-page .legal-links a { text-decoration: none; }
+
+.legal-page a[href^="mailto:"],
+.legal-page a[href^="tel:"] {
+  text-decoration: none;
+}

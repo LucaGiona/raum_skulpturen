@@ -16,19 +16,22 @@ function applyLanguage(lang) {
     document.documentElement.lang = lang;
     toggleBtn.textContent = lang === "de" ? "EN" : "DE";
     toggleBtn.dataset.lang = lang;
-    localStorage.setItem(STORAGE_KEY, lang);
+    toggleBtn.setAttribute("aria-label", lang === "de" ? "Switch to English" : "Auf Deutsch umschalten");
+    document.dispatchEvent(new Event("site-language-change"));
 }
 
 async function init() {
     const res = await fetch("/js/data/translations.json");
     translations = await res.json();
 
-    const saved = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
+    let saved = DEFAULT_LANG;
+    try { saved = localStorage.getItem(STORAGE_KEY) || saved; } catch { /* Ohne Browser-Speicher nutzbar. */ }
     applyLanguage(saved);
 
     toggleBtn.addEventListener("click", () => {
         const next = toggleBtn.dataset.lang === "de" ? "en" : "de";
         applyLanguage(next);
+        try { localStorage.setItem(STORAGE_KEY, next); } catch { /* Speicherung optional. */ }
     });
 }
 

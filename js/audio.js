@@ -9,7 +9,10 @@ function applyState() {
     pauseIcon.toggleAttribute("hidden", !isOn);
     playIcon.toggleAttribute("hidden", isOn);
     toggleBtn.setAttribute("aria-pressed", String(isOn));
-    toggleBtn.setAttribute("aria-label", isOn ? "Musik pausieren" : "Musik abspielen");
+    const english = document.documentElement.lang === "en";
+    toggleBtn.setAttribute("aria-label", english
+        ? (isOn ? "Pause music" : "Play music")
+        : (isOn ? "Musik pausieren" : "Musik abspielen"));
 }
 
 function startPlayback() {
@@ -37,3 +40,5 @@ toggleBtn.addEventListener("click", () => {
 });
 
 applyState();
+
+document.addEventListener("site-language-change", applyState);
