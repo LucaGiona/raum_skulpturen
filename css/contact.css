@@ -14,7 +14,13 @@
 
 @media (min-width: 601px) {
     .contact {
-        margin-top: -180px;
+        /* .guestbook's fade zone is 45% of its own height, which grows
+           with viewport width up to 680px (306px fade zone) before
+           capping out around ~1172px wide. The overlap here must
+           cover that worst case even below the 1200px breakpoint,
+           not just the smaller fade zone at 601px itself - otherwise
+           the two photos meet across a visible gap on wider tablets. */
+        margin-top: -330px;
         padding-top: 220px;
         padding-bottom: 220px;
         --parallax-amplitude: 140px;
@@ -28,7 +34,7 @@
 @media (min-width: 1200px) {
     .contact {
         max-width: 1200px;
-        margin-top: -260px;
+        margin-top: -330px;
         margin-left: auto;
         margin-right: auto;
         padding-top: 280px;
