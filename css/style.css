@@ -956,21 +956,20 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
   top: 0;
   z-index: 40;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 30rem;
+  gap: 24px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 16px 20px;
+  padding: 16px clamp(90px, 12vw, 160px);
   background: var(--color-bg);
 }
 
-@media (max-width: 698px) {
+@media (max-width: 450px) {
   .guestbook-page-header {
-    flex-wrap: nowrap;
-    justify-content: center;
-    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 84px;
   }
 }
 
@@ -1001,7 +1000,7 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
 
 .guestbook-page-back {
   font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 0.9rem;
+  font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.2rem);
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--color-accent);
