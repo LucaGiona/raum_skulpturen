@@ -118,6 +118,8 @@
     text-transform: uppercase;
     text-align: center;
     color: var(--color-accent);
+    -webkit-text-stroke: 3px #000;
+    paint-order: stroke fill;
     /* Pushes the content area down within the section (.contact-bg
        grows to match via its height:calc(100% + ...) formula, so the
        photo simply extends further instead of being affected).
@@ -240,6 +242,7 @@
     padding: 12px 32px;
     font-size: 1rem;
     font-family: inherit;
+    text-transform: lowercase;
     border: 2px solid var(--color-accent);
     background: rgba(0, 0, 0, 0.72);
     color: var(--color-accent);

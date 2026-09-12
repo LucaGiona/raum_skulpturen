@@ -121,6 +121,7 @@
     padding: 12px 28px;
     font-size: 16px;
     font-family: inherit;
+    text-transform: lowercase;
     border: 2px solid var(--color-accent);
     background: var(--color-bg);
     color: var(--color-accent);
