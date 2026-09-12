@@ -603,6 +603,15 @@ body {
     position: relative;
 }
 
+.references-location {
+    font-size: 0.8em;
+    opacity: 0.65;
+}
+
+.references-location::before {
+    content: " · ";
+}
+
 .references-list li:not(:last-child)::after {
     content: "";
     position: absolute;
