@@ -241,7 +241,7 @@ body {
 .kafka-quote p {
   font-family: 'Bonheur Royale', cursive;
   font-weight: 400;
-  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
   line-height: 1.2;
   letter-spacing: normal;
   color: var(--color-text);
