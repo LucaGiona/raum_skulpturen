@@ -252,7 +252,7 @@ body {
   display: block;
   font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
-  font-size: clamp(1rem, 0.85rem + 0.75vw, 1.4rem);
+  font-size: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
   line-height: 1.4;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1057,10 +1057,9 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
   background: var(--color-bg);
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .guestbook-page-header {
     flex-wrap: wrap;
-    padding-top: 84px;
   }
 }
 
@@ -1322,6 +1321,19 @@ body :is(button, input[type="button"], input[type="submit"], input[type="reset"]
   height: auto;
   border-radius: 8px;
 }
+/* Tablet: the artwork column stayed at up to 240px wide (~320px tall)
+   while the short address/contact text is much shorter, so the grid
+   row stretched to the image's height and pushed "Steuernummer"
+   (which follows the grid) far down below the text. Shrinking the
+   artwork here keeps the row height close to the text's own height. */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .impressum-contact-layout {
+    grid-template-columns: minmax(0, 320px) 140px;
+    gap: 24px;
+  }
+  .impressum-artwork { max-width: 140px; }
+}
+
 @media (max-width: 600px) {
   .impressum-contact-layout {
     grid-template-columns: minmax(0, 240px) 100px;
