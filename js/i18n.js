@@ -9,7 +9,10 @@ function applyLanguage(lang) {
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const value = translations[lang]?.[el.dataset.i18n];
         if (value) {
-            el.textContent = value;
+            // innerHTML instead of textContent: a couple of entries
+            // (e.g. contactPrivacy) embed an inline <a> link that
+            // needs to render as markup, not literal tag text.
+            el.innerHTML = value;
         }
     });
 
