@@ -28,7 +28,8 @@ function mail_config(): ?array
  *
  * Wenn mail-config.php existiert, wird per SMTP ueber den dort konfigurierten
  * STRATO-Account versendet (zuverlaessiger, funktioniert auch lokal). Fehlt die
- * Datei, wird als Fallback die einfache PHP mail()-Funktion genutzt.
+ * Datei, wird keine Nachricht versendet (kein Fallback auf PHP mail(), da auf
+ * STRATO unzuverlaessig und ohne Fehlerrueckmeldung).
  *
  * @return array{sent: bool, debug: ?string}
  */
@@ -37,22 +38,7 @@ function send_mail(string $toEmail, string $subject, string $body, ?string $repl
     $config = mail_config();
 
     if ($config === null) {
-        $fromEmail = 'no-reply@' . ($_SERVER['HTTP_HOST'] ?? 'localhost');
-        $headers = "From: {$fromEmail}\r\n";
-
-        if ($replyToEmail !== null) {
-            $headers .= "Reply-To: {$replyToEmail}\r\n";
-        }
-
-        $headers .= 'Content-Type: text/plain; charset=UTF-8';
-
-        $sent = @mail($toEmail, $subject, $body, $headers);
-
-        return [
-            'sent' => $sent,
-            'debug' => $sent ? null : 'Keine mail-config.php gefunden und mail() ist fehlgeschlagen. '
-                . 'Siehe mail-config.example.php fuer SMTP-Versand ueber STRATO.',
-        ];
+        return ['sent' => false, 'debug' => 'SMTP-Konfiguration fehlt.'];
     }
 
     $mailer = new PHPMailer(true);
@@ -84,6 +70,7 @@ function send_mail(string $toEmail, string $subject, string $body, ?string $repl
 
         return ['sent' => true, 'debug' => null];
     } catch (PHPMailerException $e) {
-        return ['sent' => false, 'debug' => $mailer->ErrorInfo];
+        error_log('SMTP-Versand fehlgeschlagen: ' . $mailer->ErrorInfo);
+        return ['sent' => false, 'debug' => 'Versand fehlgeschlagen. Bitte Serverprotokoll pruefen.'];
     }
 }
