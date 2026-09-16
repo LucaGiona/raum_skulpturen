@@ -92,8 +92,8 @@ body {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: url('/assets/background-images/bodemuseum.jpg') center/cover no-repeat;
-  transform-origin: center;
+  background: url('/assets/background-images/background_horizontal.jpeg') center top/cover no-repeat;
+  transform-origin: center top;
   transform: scale(var(--hero-zoom-start));
   animation: hero-zoom 10s ease-in-out infinite alternate;
   will-change: transform;
@@ -113,8 +113,8 @@ body {
   .hero-bg::before {
     --hero-zoom-start: 1.05;
     --hero-zoom-end: 1.3;
-    background-position: center bottom;
-    transform-origin: center bottom;
+    background: url('/assets/background-images/background_vertikal.jpg') center top/cover no-repeat;
+    transform-origin: center top;
   }
 }
 
@@ -125,17 +125,12 @@ body {
   }
 }
 
-/* Tablet/Desktop: full-width cover crop again (the contain+blur
-   version framed the photo too narrow). The source photo is a tall
-   portrait shot, so this still only ever shows a thin horizontal
-   slice of it - a proper wide/landscape photo is needed to fix that
-   for real; until then this is the best compromise. */
 @media (min-width: 801px) and (max-width: 1199px) {
   .hero-bg::before {
     --hero-zoom-start: 1;
     --hero-zoom-end: 1.1;
-    background-position: center bottom;
-    transform-origin: center bottom;
+    background-position: center top;
+    transform-origin: center top;
   }
 }
 
@@ -143,8 +138,8 @@ body {
   .hero-bg::before {
     --hero-zoom-start: 1;
     --hero-zoom-end: 1.12;
-    background-position: center bottom;
-    transform-origin: center bottom;
+    background-position: center top;
+    transform-origin: center top;
   }
 }
 
