@@ -584,19 +584,19 @@ body {
 
 .references-list {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: start;
     gap: 12px 32px;
     margin: 0;
     padding: 0;
+    text-align: left;
 }
 
 .references-list li {
     font-size: 1.1rem;
     letter-spacing: 0.02em;
     color: var(--color-text-muted);
-    position: relative;
 }
 
 .references-location {
@@ -608,41 +608,19 @@ body {
     content: " · ";
 }
 
-.references-list li:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    right: -17px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--color-border);
+.references-item--wide {
+    grid-column: 1 / -1;
 }
 
-@media (max-width: 740px) {
+@media (min-width: 741px) {
     .references-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: center;
-    }
-
-    .references-list li::after {
-        display: none;
+        grid-template-columns: repeat(2, max-content);
+        justify-content: center;
     }
 
     .references-item--wide {
-        grid-column: 1 / -1;
-    }
-
-    .references-list li:nth-child(even):not(.references-item--wide) {
-        justify-self: end;
-        text-align: right;
-    }
-
-    .references-list li:nth-child(odd):not(.references-item--wide) {
-        justify-self: start;
-        text-align: left;
+        justify-self: center;
+        text-align: center;
     }
 }
 
