@@ -1,11 +1,9 @@
-const trigger = document.querySelector(".bio");
 const button = document.getElementById("back-to-top");
 
-const EARLY_OFFSET = 400;
+const SHOW_AFTER = 400;
 
 function updateVisibility() {
-    const triggerTop = trigger.getBoundingClientRect().top + window.scrollY;
-    button.hidden = window.scrollY < triggerTop - EARLY_OFFSET;
+    button.hidden = window.scrollY < SHOW_AFTER;
 }
 
 window.addEventListener("scroll", updateVisibility, { passive: true });
