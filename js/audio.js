@@ -1,13 +1,13 @@
 const toggleBtn = document.getElementById("audio-toggle");
 const pauseIcon = toggleBtn.querySelector('[data-icon="pause"]');
-const playIcon = toggleBtn.querySelector('[data-icon="play"]');
+const musicIcon = toggleBtn.querySelector('[data-icon="music"]');
 const player = document.getElementById("site-audio");
 
 let isOn = false;
 
 function applyState() {
     pauseIcon.toggleAttribute("hidden", !isOn);
-    playIcon.toggleAttribute("hidden", isOn);
+    musicIcon.toggleAttribute("hidden", isOn);
     toggleBtn.setAttribute("aria-pressed", String(isOn));
     const english = document.documentElement.lang === "en";
     toggleBtn.setAttribute("aria-label", english
