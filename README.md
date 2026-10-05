@@ -40,7 +40,17 @@ php -S localhost:8000
 
 Danach ist die Seite unter `http://localhost:8000` erreichbar. Für den Admin-Bereich (`/admin`) müssen `admin/config.php` (aus `admin/config.example.php`) und für den Mailversand `mail-config.php` (aus `mail-config.example.php`) lokal angelegt werden – beide sind aus Sicherheitsgründen nicht Teil des Repos.
 
-## Struktur
+## Galerie-Aktualisierung
+
+Die Kunst-am-Bau- und Skulpturen-Galerie auf der Startseite lädt beim Öffnen bzw. Neuladen und beim Zurückwechseln zum Website-Tab die aktuelle `js/data/images.json` ohne Browser-Cache. Auch beim Wiederherstellen aus dem Browser-Seitencache werden die Daten aktualisiert. Es gibt keine regelmäßigen Hintergrundabfragen; eine dauerhaft geöffnete, aktive Seite aktualisiert sich daher nicht allein durch einen Upload.
+
+Die gewählte Kategorie und die Anzahl aufgeklappter Bilder bleiben erhalten. Nur geänderte Daten lösen eine neue Darstellung aus. Bei Netzwerkfehlern oder ungültigen Daten bleibt die bisherige Galerie sichtbar. Das Gästebuch-Karussell ist von dieser Aktualisierung nicht betroffen.
+
+Für dieses Update nur `js/gallery.js` per FileZilla in den Ordner `js/` des Website-Stammverzeichnisses hochladen (aktuell `/website-live-okt26/js/gallery.js`). Bereits geöffnete Browser einmal mit Hard Refresh aktualisieren, damit sie den neuen JavaScript-Code laden. Die live vom Admin gepflegten Dateien in `js/data/` nicht mit älteren lokalen Daten überschreiben.
+
+Prüfung nach dem Upload: Website öffnen, im Admin-Tab ein Bild hochladen und zurück zur Website wechseln. Bilderzahl bzw. Galerie müssen sich aktualisieren; ein am Ende hinzugefügtes Bild wird gegebenenfalls erst über „Mehr“ sichtbar.
+
+## Projektstruktur
 
 * `index.html` – Startseite
 * `html/` – weitere Seiten (Gästebuch, Impressum, Datenschutz)

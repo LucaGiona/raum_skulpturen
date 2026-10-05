@@ -1,5 +1,37 @@
-import { galleries } from "./data/images.js";
+import { galleries as initialGalleries } from "./data/images.js";
 import { openLightbox } from "./lightbox.js";
+
+let galleries = initialGalleries;
+let refreshPending = false;
+const galleryDataUrl = new URL("./data/images.json", import.meta.url);
+
+async function refreshGallery() {
+    if (refreshPending || document.visibilityState === "hidden") return;
+    refreshPending = true;
+    try {
+        const response = await fetch(galleryDataUrl, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const next = await response.json();
+        for (const category of ["works", "sculptures"]) {
+            const gallery = next?.[category];
+            if (!gallery || typeof gallery.path !== "string" ||
+                !Array.isArray(gallery.images) ||
+                !gallery.images.every(filename => typeof filename === "string")) {
+                throw new Error("Ungültige Galerie-Daten");
+            }
+        }
+        if (["works", "sculptures"].some(category =>
+            JSON.stringify(next[category]) !== JSON.stringify(galleries[category]))) {
+            galleries = next;
+            renderGallery();
+        }
+    } catch (error) {
+        // Bei Netzwerkfehlern die bereits geladene Galerie erhalten.
+        console.warn("Galerie konnte nicht aktualisiert werden:", error);
+    } finally {
+        refreshPending = false;
+    }
+}
 
 const BATCH_SIZE = 6;
 let activeGallery = "works";
@@ -110,3 +142,9 @@ categoryButtons.forEach(button => {
 toggleBtn.addEventListener("click", toggleGallerySize);
 
 renderGallery();
+refreshGallery();
+document.addEventListener("visibilitychange", refreshGallery);
+window.addEventListener("focus", refreshGallery);
+window.addEventListener("pageshow", event => {
+    if (event.persisted) refreshGallery();
+});
