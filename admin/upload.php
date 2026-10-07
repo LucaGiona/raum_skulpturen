@@ -6,14 +6,7 @@ require_once __DIR__ . '/lib/gallery-data.php';
 
 require_login();
 
-const ALLOWED_MIME_TYPES = [
-    'image/jpeg' => 'jpg',
-    'image/png' => 'png',
-    'image/webp' => 'webp',
-];
-
-const MAX_FILE_SIZE_BYTES = 2 * 1024 * 1024; // 2 MB
-const MAX_IMAGE_WIDTH = 2400; // groessere Uploads werden herunterskaliert
+require_once __DIR__ . '/lib/image-upload.php';
 
 function fail(string $message): void
 {
@@ -23,6 +16,10 @@ function fail(string $message): void
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     fail('Ungueltige Anfrage.');
+}
+
+if (empty($_POST) && (int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 0) {
+    fail('Upload nicht angekommen. Möglicherweise überschreitet die Anfrage das PHP-Limit post_max_size. Bitte die Servereinstellungen prüfen.');
 }
 
 if (!check_csrf_token($_POST['csrf_token'] ?? '')) {
@@ -37,7 +34,7 @@ if (!isset($galleries[$category])) {
 }
 
 if (isset($_FILES['image']) && in_array($_FILES['image']['error'], [UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE], true)) {
-    fail('Die Datei ist zu groß. Bitte ein JPG- oder PNG-Bild mit maximal 2 MB auswählen.');
+    fail('Die Datei ist zu groß. Maximal 20 MB pro Foto. Falls die Datei kleiner ist, muss das PHP-Upload-Limit auf dem Server erhöht werden.');
 }
 
 if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
@@ -46,51 +43,40 @@ if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
 
 $file = $_FILES['image'];
 
-if ($file['size'] > MAX_FILE_SIZE_BYTES) {
-    fail('Die Datei ist zu groß (maximal 2 MB).');
+if (!is_uploaded_file($file['tmp_name'])) {
+    fail('Ungültige Upload-Datei.');
 }
 
-$finfo = new finfo(FILEINFO_MIME_TYPE);
-$mimeType = $finfo->file($file['tmp_name']);
-
-if (!isset(ALLOWED_MIME_TYPES[$mimeType])) {
-    fail('Nur JPG- oder PNG-Bilder sind erlaubt.');
+try {
+    $image = inspect_upload_image($file['tmp_name']);
+} catch (Throwable $e) {
+    fail($e->getMessage());
 }
-
-$extension = ALLOWED_MIME_TYPES[$mimeType];
+$extension = $image['extension'];
 
 // Sicheren, eindeutigen Dateinamen erzeugen (Originalname als Basis, aber bereinigt).
 $originalBase = pathinfo($file['name'], PATHINFO_FILENAME);
 $safeBase = preg_replace('/[^a-z0-9\-]+/', '-', strtolower($originalBase));
-$safeBase = trim($safeBase, '-');
+$safeBase = substr(trim($safeBase, '-'), 0, 100);
 if ($safeBase === '') {
     $safeBase = 'bild';
 }
 
 $filename = $safeBase . '-' . date('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.' . $extension;
 
-$targetDir = __DIR__ . '/../' . ltrim($galleries[$category]['path'], '/');
+$targetDir = gallery_dir($galleries[$category]['path']);
 if (!is_dir($targetDir)) {
     fail('Zielordner fuer diese Kategorie existiert nicht: ' . $targetDir);
 }
 
 $targetPath = $targetDir . $filename;
 
-// Bild ggf. verkleinern (haelt die Dateigroessen im Rahmen), sonst einfach kopieren.
-$resized = false;
-
-if (function_exists('getimagesize')) {
-    $imageInfo = @getimagesize($file['tmp_name']);
-
-    if ($imageInfo !== false && $imageInfo[0] > MAX_IMAGE_WIDTH) {
-        $resized = resize_and_save_image($file['tmp_name'], $targetPath, $mimeType, MAX_IMAGE_WIDTH);
-    }
-}
-
-if (!$resized) {
-    if (!move_uploaded_file($file['tmp_name'], $targetPath)) {
-        fail('Datei konnte nicht gespeichert werden.');
-    }
+// Erst vollständig verarbeiten; bei Fehlern niemals das Original übernehmen.
+try {
+    optimize_upload_image($file['tmp_name'], $targetPath, $image);
+} catch (Throwable $e) {
+    @unlink($targetPath);
+    fail($e->getMessage());
 }
 
 try {
@@ -106,47 +92,3 @@ try {
 
 header('Location: /admin/index.php?success=1&category=' . urlencode($category));
 exit;
-
-function resize_and_save_image(string $sourcePath, string $targetPath, string $mimeType, int $maxWidth): bool
-{
-    if (!function_exists('imagecreatefromjpeg')) {
-        return false; // GD nicht verfuegbar, Original wird stattdessen kopiert.
-    }
-
-    $source = match ($mimeType) {
-        'image/jpeg' => @imagecreatefromjpeg($sourcePath),
-        'image/png' => @imagecreatefrompng($sourcePath),
-        'image/webp' => function_exists('imagecreatefromwebp') ? @imagecreatefromwebp($sourcePath) : false,
-        default => false,
-    };
-
-    if ($source === false) {
-        return false;
-    }
-
-    $width = imagesx($source);
-    $height = imagesy($source);
-    $newWidth = $maxWidth;
-    $newHeight = (int) round($height * ($newWidth / $width));
-
-    $resized = imagecreatetruecolor($newWidth, $newHeight);
-
-    if ($mimeType === 'image/png' || $mimeType === 'image/webp') {
-        imagealphablending($resized, false);
-        imagesavealpha($resized, true);
-    }
-
-    imagecopyresampled($resized, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-
-    $saved = match ($mimeType) {
-        'image/jpeg' => imagejpeg($resized, $targetPath, 85),
-        'image/png' => imagepng($resized, $targetPath),
-        'image/webp' => function_exists('imagewebp') ? imagewebp($resized, $targetPath, 85) : false,
-        default => false,
-    };
-
-    imagedestroy($source);
-    imagedestroy($resized);
-
-    return $saved;
-}

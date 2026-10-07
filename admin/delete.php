@@ -37,7 +37,7 @@ if (!in_array($safeFilename, $galleries[$category]['images'], true)) {
     exit;
 }
 
-$filePath = __DIR__ . '/../' . ltrim($galleries[$category]['path'], '/') . $safeFilename;
+$filePath = gallery_dir($galleries[$category]['path']) . $safeFilename;
 
 if (is_file($filePath)) {
     @unlink($filePath);

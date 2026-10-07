@@ -103,3 +103,22 @@ function move_image(string $category, string $filename, string $direction): void
     $galleries[$category]['images'] = $images;
     save_galleries($galleries);
 }
+
+/**
+ * Dateisystem-Ordner einer Galerie (mit abschliessendem Slash).
+ *
+ * 'path' in images.json ist ein URL-Pfad und enthaelt im Testordner den
+ * Basis-Pfad (z.B. "/website-neu/assets/images/"). Dieser Praefix wird hier
+ * entfernt, da er im Dateisystem bereits im Projekt-Stammverzeichnis steckt.
+ */
+function gallery_dir(string $urlPath): string
+{
+    // /website-neu/admin/upload.php -> /website-neu, /admin/upload.php -> ''
+    $basePath = rtrim(dirname(dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/\\');
+
+    if ($basePath !== '' && str_starts_with($urlPath, $basePath . '/')) {
+        $urlPath = substr($urlPath, strlen($basePath));
+    }
+
+    return __DIR__ . '/../../' . ltrim($urlPath, '/');
+}

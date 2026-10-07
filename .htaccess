@@ -1,6 +1,9 @@
 # Verzeichnis-Listing global deaktivieren.
 Options -Indexes
 
+# Alte Google-Adresse exakt mit und ohne abschliessenden Slash weiterleiten.
+RedirectMatch 301 ^/Skulptur/?$ https://sculptur-raum.de/
+
 # Zugriff auf versteckte Dateien/Ordner (z.B. .git, .env, .DS_Store) sperren,
 # falls sie versehentlich mit hochgeladen werden.
 <FilesMatch "^\.">

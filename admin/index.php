@@ -21,7 +21,7 @@ $errorMessage = $_GET['error'] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin — Galerie — Skulptur + Raum</title>
-    <link rel="stylesheet" href="/admin/admin.css">
+    <link rel="stylesheet" href="/admin/admin.css?v=<?= filemtime(__DIR__ . '/admin.css') ?>">
 </head>
 <body class="admin-body">
     <header class="admin-header">
@@ -55,7 +55,7 @@ $errorMessage = $_GET['error'] ?? '';
 
     <section class="admin-upload">
         <h2>Neues Bild hochladen</h2>
-        <form method="post" action="/admin/upload.php" enctype="multipart/form-data">
+        <form method="post" action="/admin/upload.php" enctype="multipart/form-data" id="upload-form">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($token) ?>">
 
             <div class="admin-field">
@@ -71,11 +71,19 @@ $errorMessage = $_GET['error'] ?? '';
 
             <div class="admin-field">
                 <label for="image">Bilddatei</label>
-                <small id="image-hint">JPG, PNG oder WebP, maximal 2&nbsp;MB. Empfohlen: 600–1600 Pixel an der längsten Seite.</small>
+                <small id="image-hint">JPG, PNG oder WebP, maximal 20&nbsp;MB. Fotos werden automatisch auf maximal 2560 Pixel an der längsten Seite verkleinert. HEIC/HEIF bitte vorher als JPG exportieren. Sehr große Pixelmaße können das Server-Speicherlimit überschreiten.</small>
                 <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp" aria-describedby="image-hint" required>
             </div>
 
-            <button type="submit">Hochladen</button>
+            <button type="submit" id="upload-button">Hochladen</button>
+            <div id="upload-status" hidden>
+                <p id="upload-message" role="status">Upload wird vorbereitet …</p>
+                <div id="upload-progress" class="upload-progress" role="progressbar"
+                     aria-label="Foto hochladen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <span id="upload-progress-fill" class="upload-progress-fill"></span>
+                </div>
+                <small>Bitte diese Seite bis zum Abschluss geöffnet lassen.</small>
+            </div>
         </form>
     </section>
 
@@ -119,5 +127,102 @@ $errorMessage = $_GET['error'] ?? '';
             <?php endforeach; ?>
         </div>
     </section>
+<script>
+    const uploadForm = document.getElementById('upload-form');
+    const uploadButton = document.getElementById('upload-button');
+    const uploadStatus = document.getElementById('upload-status');
+    const uploadMessage = document.getElementById('upload-message');
+    const uploadProgress = document.getElementById('upload-progress');
+    const uploadFill = document.getElementById('upload-progress-fill');
+    const uploadFields = [document.getElementById('image'), document.getElementById('category')];
+    let uploading = false;
+
+    function unlockUpload() {
+        uploading = false;
+        uploadButton.disabled = false;
+        uploadButton.hidden = false;
+        uploadButton.textContent = 'Hochladen';
+        uploadFields.forEach((field) => { field.disabled = false; });
+        uploadForm.removeAttribute('aria-busy');
+    }
+
+    function uploadFailed(message) {
+        unlockUpload();
+        uploadStatus.dataset.state = 'error';
+        uploadMessage.textContent = message;
+        uploadProgress.hidden = true;
+    }
+
+    function processingUpload() {
+        uploadFill.style.width = '100%';
+        uploadProgress.setAttribute('aria-valuenow', '100');
+        uploadStatus.dataset.state = 'processing';
+        uploadMessage.textContent = 'Übertragung abgeschlossen – Foto wird jetzt verarbeitet …';
+        uploadButton.textContent = 'Wird verarbeitet …';
+    }
+
+    uploadForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (uploading) return;
+
+        // Formulardaten vor dem Sperren der Eingabefelder erfassen.
+        const data = new FormData(uploadForm);
+        uploading = true;
+        uploadButton.disabled = true;
+        uploadButton.hidden = true;
+        uploadButton.textContent = 'Wird hochgeladen …';
+        uploadFields.forEach((field) => { field.disabled = true; });
+        uploadStatus.hidden = false;
+        uploadStatus.dataset.state = 'uploading';
+        uploadProgress.hidden = false;
+        uploadProgress.setAttribute('aria-valuenow', '0');
+        uploadFill.style.width = '0%';
+        uploadMessage.textContent = 'Foto wird hochgeladen: 0 %';
+        uploadForm.setAttribute('aria-busy', 'true');
+
+        const request = new XMLHttpRequest();
+        request.upload.addEventListener('progress', (progress) => {
+            if (!progress.lengthComputable) {
+                uploadProgress.removeAttribute('aria-valuenow');
+                uploadMessage.textContent = 'Foto wird hochgeladen …';
+                return;
+            }
+            const percent = Math.min(100, Math.floor(progress.loaded / progress.total * 100));
+            uploadFill.style.width = percent + '%';
+            uploadProgress.setAttribute('aria-valuenow', String(percent));
+            uploadMessage.textContent = 'Foto wird hochgeladen: ' + percent + ' %';
+        });
+        request.upload.addEventListener('load', processingUpload);
+        request.addEventListener('load', () => {
+            // PHP leitet nach Erfolg bzw. Fehler auf die bestehende Admin-Seite um.
+            const destination = new URL(request.responseURL || uploadForm.action, window.location.href);
+            if (request.status >= 200 && request.status < 300
+                && destination.origin === window.location.origin
+                && (destination.searchParams.has('success') || destination.searchParams.has('error')
+                    || destination.pathname.endsWith('/login.php'))) {
+                window.location.assign(destination.href);
+                return;
+            }
+            uploadFailed('Die Serverantwort konnte nicht bestätigt werden. Bitte die Seite neu laden und die Galerie prüfen, bevor du erneut hochlädst.');
+        });
+        request.addEventListener('error', () => {
+            uploadFailed('Die Verbindung wurde unterbrochen. Bitte die Seite neu laden und prüfen, ob das Foto bereits in der Galerie ist.');
+        });
+        request.addEventListener('abort', () => {
+            uploadFailed('Der Upload wurde abgebrochen. Bitte vor einem erneuten Upload die Galerie prüfen.');
+        });
+        try {
+            request.open('POST', uploadForm.action);
+            request.send(data);
+        } catch (error) {
+            uploadFailed('Der Upload konnte nicht gestartet werden. Bitte die Seite neu laden und erneut versuchen.');
+        }
+    });
+
+    window.addEventListener('pageshow', () => {
+        unlockUpload();
+        uploadStatus.hidden = true;
+    });
+    </script>
 </body>
 </html>

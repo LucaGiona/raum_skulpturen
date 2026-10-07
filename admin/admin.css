@@ -186,3 +186,51 @@ body :is(h1, h2, h3, h4, h5, h6) {
 body :is(button, input[type="button"], input[type="submit"], input[type="reset"]) {
   letter-spacing: 0.04em;
 }
+
+#upload-status {
+    margin-top: 1rem;
+    max-width: 36rem;
+}
+
+#upload-message {
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+}
+
+.upload-progress {
+    height: 1rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #dce7ec;
+    margin-bottom: 0.5rem;
+}
+
+.upload-progress-fill {
+    display: block;
+    height: 100%;
+    width: 0%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #2563eb, #0d9488, #22c55e);
+    transition: width 0.35s ease;
+}
+
+#upload-status[data-state="processing"] .upload-progress-fill {
+    animation: upload-pulse 1.5s ease-in-out infinite;
+}
+
+#upload-status[data-state="error"] #upload-message {
+    color: #c0392b;
+}
+
+#upload-button:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+@keyframes upload-pulse {
+    50% { opacity: 0.55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .upload-progress-fill { transition: none; animation: none !important; }
+}

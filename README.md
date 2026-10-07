@@ -70,3 +70,35 @@ https://www.sculptur-raum.de/
 **Gøran Thie**
 Skulptur + Raum
 Berlin
+
+## Foto-Upload bis 20 MB
+
+Neue Uploads werden mit GD immer neu kodiert: JPEG/WebP mit Qualität 85, PNG verlustfrei mit Kompressionsstufe 6. Die längste Seite wird auf höchstens 2560 Pixel begrenzt; kleinere Bilder werden nicht vergrößert. JPEG-EXIF-Ausrichtungen einschließlich Spiegelungen werden angewendet. Metadaten werden nicht übernommen. PNG/WebP behalten Transparenz. Die optimierte Datei ersetzt nur den neuen Upload, bestehende Fotos bleiben unverändert.
+
+Dateigröße, tatsächlicher MIME-Typ, Bildheader und Pixelmaße werden vor dem Dekodieren geprüft. Maximal 60 Megapixel bzw. 20000 Pixel je Seite sind zulässig; abhängig vom verfügbaren PHP-Speicher greift eine niedrigere Grenze. Die konservative Speicherprüfung kann besonders große Handyfotos ablehnen, auch wenn sie unter 20 MB liegen. Beschädigte Dateien oder Verarbeitungsfehler führen zu einer Fehlermeldung, niemals zum Speichern des ungeprüften Originals.
+
+HEIC/HEIF: Die vorhandene GD-Verarbeitung unterstützt diese Formate nicht. Solche Dateien werden verständlich abgewiesen und müssen als JPG exportiert werden. Eine direkte Konvertierung wäre mit Imagick und einem funktionierenden HEIC/libheif-Decoder möglich, ist hier aber nicht implementiert. Imagick ist lokal nicht installiert; die STRATO-Unterstützung wurde nicht geprüft.
+
+### PHP-Einstellungen und STRATO
+
+Lokal geprüft (PHP 8.5.9 CLI): `upload_max_filesize=2M`, `post_max_size=8M`, `memory_limit=128M`; GD mit JPEG/PNG/WebP sowie EXIF und Fileinfo vorhanden. Diese lokalen Werte wurden nicht dauerhaft geändert. Die Verarbeitungstests liefen mit `memory_limit=512M`.
+
+Auf STRATO müssen die **effektiven Werte der Web-PHP-Umgebung** separat geprüft und gegebenenfalls über die dort unterstützte PHP-Konfiguration angepasst werden:
+
+- `upload_max_filesize`: mindestens `20M`.
+- `post_max_size`: mindestens `24M`, damit zusätzlich zum Foto die Formulardaten Platz haben.
+- `memory_limit`: `512M` als Ausgangswert für übliche Handyfotos. Sehr hochauflösende Fotos (z. B. 48 MP) können mit der konservativen Prüfung mehr benötigen oder werden verständlich abgewiesen.
+- GD mit JPEG/PNG/WebP, EXIF und Fileinfo müssen aktiv sein; Schreibrechte für Galerieordner und Galerie-Daten müssen bestehen bleiben.
+
+Keine STRATO-Einstellung wurde ausgelesen oder geändert. Upload-Limits lassen sich nicht nachträglich im Upload-Skript erhöhen. Auch vorgeschaltete Hosting-Limits und Laufzeitlimits sind bei einem abschließenden Test auf STRATO zu berücksichtigen.
+
+### Mit FileZilla übertragen
+
+In die entsprechenden Ordner des bestehenden Website-Stammverzeichnisses hochladen:
+
+- `admin/upload.php`
+- `admin/index.php`
+- `admin/lib/image-upload.php` (neu)
+- `admin/lib/gallery-data.php`, falls die vorhandene `gallery_dir()`-Pfadkorrektur noch nicht auf dem Server liegt; `upload.php` benötigt diese Funktion.
+
+`README.md` ist nur Dokumentation und muss nicht hochgeladen werden. Keine lokalen Galerie-Daten oder Bildbestände über die live gepflegten Dateien kopieren. Nach Übertragung ein großes JPEG, ein gedrehtes Handyfoto und eine ungültige Datei testen und Galerie sowie Detailansicht prüfen. Es wurde nichts automatisch veröffentlicht.
